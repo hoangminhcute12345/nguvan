@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nguyễn Minh Châu</title>
+    <style>
+      /* Cấu hình cơ bản cho trang */
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #ffebcc; /* Màu nền cam nhạt */
+        margin: 0;
+        padding: 0;
+        color: #333; /* Màu chữ tối cho dễ đọc */
+      }
+      a {
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+        margin-top: 10px;
+        display: inline-block;
+      }
+      .head {
+        display: flex;
+        align-items: center; /* Canh giữa theo chiều dọc */
+        padding: 5px 20px; /* Giảm padding để box ngắn lại */
+        background-color: #ff7f50; /* Màu nền đỏ cam cho header */
+        width: fit-content; /* Đảm bảo chiều rộng chỉ bao phủ nội dung */
+        margin: 10px; /* Khoảng cách giữa box và các phần tử khác */
+        border-radius: 15px; /*Bo tròn*/
+      }
+
+      .head img {
+        width: 40px; /* Kích thước logo */
+        margin-right: 10px; /* Khoảng cách giữa logo và chữ */
+      }
+
+      .head a {
+        font-size: 15px;
+        color: white;
+        margin: 0; /* Loại bỏ margin mặc định */
+      }
+
+      .return a {
+        text-decoration: none;
+        color: #ff6347; /* Màu đỏ cam cho liên kết */
+        font-weight: bold;
+        padding: 10px 20px;
+        display: inline-block;
+        margin: 20px;
+        background-color: #fff;
+        border-radius: 5px;
+        border: 1px solid #ff6347;
+      }
+
+      a:hover {
+        background-color: #ff6347;
+        color: white;
+      }
+
+      /* Avatar section: Đặt ảnh ở bên trái và paragraph ở bên phải */
+      .avatar {
+        display: flex; /* Sử dụng flexbox để căn ngang */
+        align-items: flex-start; /* Căn chỉnh ảnh và văn bản về phía trên cùng */
+        margin: 20px;
+      }
+
+      .avatar-img {
+        width: 20%; /* Đặt kích thước ảnh phù hợp */
+        max-width: 300px; /* Giới hạn kích thước tối đa của ảnh */
+        border-radius: 10px;
+        border: 5px solid #ff6347;
+        margin-right: 20px; /* Khoảng cách giữa ảnh và nội dung */
+      }
+
+      .avatar h2 {
+        margin-top: 0;
+      }
+
+      .avatar p {
+        background-color: #fff; /* Nền trắng cho box */
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        font-size: 16px;
+        line-height: 1.6;
+        margin: 10px 0;
+      }
+
+      /* Paragraph section: Căn giữa và giảm chiều rộng */
+      .paragraph {
+        width: 55%; /* Giảm chiều rộng của paragraph */
+        margin: 40px auto; /* Căn giữa và thêm khoảng cách trên/dưới */
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .paragraph p {
+        font-size: 16px;
+        line-height: 1.6;
+        margin-bottom: 20px; /* Thêm khoảng cách giữa các đoạn */
+      }
+
+      .paragraph ul {
+        list-style-type: square;
+        margin-left: 20px;
+      }
+
+      .paragraph ul li {
+        font-size: 16px;
+        margin-bottom: 8px;
+      }
+
+      /* Đảm bảo cho trang di động */
+      @media (max-width: 768px) {
+        .avatar {
+          flex-direction: column; /* Đổi sang chiều dọc cho màn hình nhỏ */
+          align-items: center;
+        }
+
+        .avatar-img {
+          width: 60%; /* Thay đổi kích thước ảnh cho phù hợp với màn hình nhỏ */
+          margin-top: 10px;
+        }
+
+        .paragraph {
+          width: 90%; /* Mở rộng paragraph trên màn hình nhỏ */
+        }
+      }
+      
+      
+    </style>
+  </head>
+  <body>
+    <div class="head" id="head">
+        <img src="logo.png" alt="Logo" />
+        <a href="index.html">Nhóm MATH</a>
+      </div>
+      <br>
+    
+    
+    <div class="avatar" id="avatar">
+      <img
+        src="https://upload.wikimedia.org/wikipedia/vi/3/36/Nh%C3%A0_v%C4%83n_Nguy%E1%BB%85n_Minh_Ch%C3%A2u.jpg"
+        alt="Nguyễn Minh Châu"
+        class="avatar-img"
+      />
+      <div>
+        <h2>Nguyễn Minh Châu</h2>
+        <p>
+          Nguyễn Minh Châu là một trong những nhà văn quan trọng và có ảnh hưởng sâu rộng trong văn học Việt Nam hiện đại. Ông được biết đến với những tác phẩm sắc sảo, khám phá tâm lý nhân vật và phản ánh các vấn đề xã hội, đặc biệt là sự xung đột giữa các giá trị truyền thống và hiện đại.
+        </p>
+        <p>
+          Ông sinh ngày 20 tháng 10 năm 1930, quê ở làng Văn Thai, tên nôm là làng Thơi, xã Sơn Hải, huyện Quỳnh Lưu, tỉnh Nghệ An.
+        </p>
+      </div>
+    </div>
+    
+    <div class="paragraph" id="paragraph">
+      <p>
+        Theo lời kể của bà Nguyễn Thị Doanh (Vợ của ông), tên khai sinh của ông là Nguyễn Thí. Mãi đến khi đi học, ông mới được bố mẹ đổi tên thành Minh Châu.
+      </p>
+      <p>
+        Trong những ghi chép cuối cùng của mình, khi nằm viện ở Bệnh viện Quân y 108, Nguyễn Minh Châu tự nhận xét về bản thân: "Khi còn nhỏ, tôi là một thằng bé rụt rè, nhút nhát, sợ tất cả từ chuột nhắt đến ma quái. Lớn lên, gần sáu chục tuổi, mỗi khi đến nơi đông người, tôi chỉ muốn trốn vào một góc khuất, như con dế chui vào lỗ để cảm thấy yên ổn, bình tâm"
+      </p>
+      <p>
+        Các tác phẩm của ông đặc biệt in đậm dấu ấn về nông thôn và những người lao động. Ông khai thác nhiều đề tài như lịch sử, văn học, huyền thoại, cổ tích và xã hội Việt Nam đương đại. Ngoài truyện ngắn, ông còn viết kịch, thơ (dù chưa xuất bản tập thơ nào) và tiểu luận phê bình văn học. Tác phẩm của ông đã được dịch ra nhiều ngôn ngữ và nhận được sự chú ý quốc tế.
+      </p>
+      <p>
+        Năm 1960, ông viết truyện ngắn đầu tay <i>Sau một buổi tập</i>. Trong sự nghiệp sáng tác kéo dài ba thập kỷ (1960-1989), khép lại với truyện vừa <i>Phiên chợ Giát</i> viết năm 1989, ông để lại 13 tập văn xuôi và một tiểu luận phê bình. Các tác phẩm chính của ông là <i>Cửa sông</i> (tiểu thuyết, 1966), <i>Những vùng trời khác nhau</i> (truyện ngắn, 1970), <i>Dấu chân người lính</i> (tiểu thuyết, 1972), ...
+      </p>
+      <p>
+        Ông có một số tác phẩm tiêu biểu như:
+        <ul>
+          <li>Cửa sông (tiểu thuyết, 1967)</li>
+          <li>Những vùng trời khác nhau (tập truyện ngắn, 1970)</li>
+          <li>Dấu chân người lính (tiểu thuyết, 1972)</li>
+          <li>Những người đi từ trong rừng ra (tiểu thuyết, 1982)</li>
+          <li>Người đàn bà trên chuyến tàu tốc hành (tập truyện ngắn, 1983)</li>
+          <li>Bến quê (tập truyện ngắn, 1985)</li>
+          <li>Mảnh đất tình yêu (tiểu thuyết, 1987)</li>
+          <li>Chiếc thuyền ngoài xa (tập truyện ngắn, 1987)</li>
+          <li>Phiên chợ Giát (truyện vừa, 1988)</li>
+        </ul>
+        
+      </p>
+      <p>
+        Ông qua đời ngày 23 tháng 1 năm 1989 do bệnh ung thư máu tại Hà Nội, hưởng dương 59 tuổi. Năm 2000, ông được Nhà nước truy tặng giải thưởng Hồ Chí Minh về văn học nghệ thuật.
+      </p>
+    </div>
+    
+    <div class="return" id="return"><a href="./index.html" class="back-link">Trở lại</a></div>
+  </body>
+</html>
