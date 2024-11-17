@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tâm hồn mẹ</title>
+    <style>
+      /* Cấu hình cơ bản cho trang */
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #ffebcc; /* Màu nền cam nhạt */
+        margin: 0;
+        padding: 0;
+        color: #333; /* Màu chữ tối cho dễ đọc */
+      }
+      a {
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+        margin-top: 10px;
+        display: inline-block;
+      }
+      .head {
+        display: flex;
+        align-items: center;
+        padding: 5px 20px;
+        background-color: #ff7f50;
+        width: fit-content;
+        margin: 10px;
+        border-radius: 15px;
+      }
+
+      .head img {
+        width: 40px;
+        margin-right: 10px;
+      }
+
+      .head a {
+        font-size: 15px;
+        color: white;
+        margin: 0;
+      }
+
+      .avatar {
+        display: flex;
+        align-items: flex-start;
+        margin: 20px;
+      }
+
+      .avatar-img {
+        width: 10%;
+        max-width: 300px;
+        border-radius: 10px;
+        border: 5px solid #ff6347;
+        margin-right: 20px;
+      }
+
+      .avatar h2 {
+        margin-top: 0;
+      }
+
+      .avatar p {
+        background-color: #fff;
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        font-size: 16px;
+        line-height: 1.6;
+        margin: 10px 0;
+      }
+
+      .paragraph,
+      .essay {
+        width: 55%;
+        margin: 40px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .paragraph p,
+      .essay p {
+        font-size: 16px;
+        line-height: 1.6;
+        margin-bottom: 20px;
+      }
+
+      /* Định dạng cho nút chuyển đổi */
+      #toggleButton {
+        text-decoration: none;
+        color: #ff6347;
+        font-weight: bold;
+        padding: 10px 20px;
+        display: inline-block;
+        margin: 20px;
+        background-color: #fff;
+        border-radius: 5px;
+        border: 1px solid #ff6347;
+        cursor: pointer;
+      }
+
+      #toggleButton:hover {
+        background-color: #ff6347;
+        color: white;
+      }
+
+      .return a {
+        text-decoration: none;
+        color: #ff6347;
+        font-weight: bold;
+        padding: 10px 20px;
+        display: inline-block;
+        margin: 20px;
+        background-color: #fff;
+        border-radius: 5px;
+        border: 1px solid #ff6347;
+      }
+
+      a:hover {
+        background-color: #ff6347;
+        color: white;
+      }
+
+      /* Đảm bảo cho trang di động */
+      @media (max-width: 768px) {
+        .avatar {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .avatar-img {
+          width: 60%;
+          margin-top: 10px;
+        }
+
+        .paragraph,
+        .essay {
+          width: 90%;
+        }
+      }
+    </style>
+    <script>
+      window.onload = function () {
+        // Ẩn phần essay khi trang tải
+        document.getElementById("essay").style.display = "none";
+      };
+
+      function toggleContent() {
+        const paragraph = document.getElementById("paragraph");
+        const essay = document.getElementById("essay");
+        const button = document.getElementById("toggleButton");
+        const avatarImage = document.getElementById("avatarImg");
+        const avatarName = document.getElementById("name");
+        const avatarIntro = document.getElementById("intro");
+        const avatarTitle = document.getElementById("title");
+
+        if (paragraph.style.display === "none") {
+          paragraph.style.display = "block";
+          essay.style.display = "none";
+          button.innerText = "Đọc bài cảm nhận";
+          avatarImage.src = "./tuongvehuu.jpg"; // ảnh của tác phẩm
+          avatarIntro.innerHTML =
+            "<i>&#34;Các nhân vật trong truyện đều là những con người cô đơn, mang mặc cảm ấy như một bản án từ khi sinh ra. Mối quan hệ gia đình và xã hội tưởng chừng bền chặt nhưng thực chất lại mong manh, dễ đứt.&#34;</i>";
+          avatarName.innerText = "Tác giả: Nguyễn Huy Thiệp";
+          avatarTitle.innerText = "Tướng về hưu";
+        } else {
+          paragraph.style.display = "none";
+          essay.style.display = "block";
+          button.innerText = "Đọc tác phẩm";
+          avatarImage.src = "./huy.jpg"; // ảnh của bài cảm nhận
+          avatarIntro.innerHTML =
+            "<i>&#34;It's time to d-d-d-d-d-d-d-d-d-d-duel&#34;</i>";
+          avatarName.innerText = "Tác giả: Hà Đăng Huy";
+          avatarTitle.innerText = "Cảm nhận về tác phẩm 'Tướng về hưu'";
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div class="head" id="head">
+      <img src="logo.png" alt="Logo" />
+      <a href="index.html">Nhóm MATH</a>
+    </div>
+
+    <div class="avatar" id="avatar">
+      <img
+        src="./tuongvehuu.jpg"
+        alt="Tướng về hưu"
+        class="avatar-img"
+        id="avatarImg"
+      />
+      <div>
+        <h2 class="title" id="title">Tướng về hưu</h2>
+        <p class="intro" id="intro">
+          <i
+            >"Các nhân vật trong truyện đều là những con người cô đơn, mang mặc
+            cảm ấy như một bản án từ khi sinh ra. Mối quan hệ gia đình và xã hội
+            tưởng chừng bền chặt nhưng thực chất lại mong manh, dễ đứt."</i
+          >
+        </p>
+        <p class="name" id="name">Tác giả: Nguyễn Huy Thiệp</p>
+      </div>
+    </div>
+
+    <!-- Nút chuyển đổi nội dung -->
+    <button id="toggleButton" onclick="toggleContent()">
+      Đọc bài cảm nhận
+    </button>
+
+    <div class="paragraph" id="paragraph">
+      <p>
+        Khi viết những dòng này, tôi đã thức tỉnh trong vài người quen những cảm
+        xúc mà thời gian đã xóa nhòa, và tôi đã xâm phạm đến cõi yên tĩnh nấm mồ
+        của chính cha tôi. Tôi buộc lòng làm vậy, và xin người đọc nể nang những
+        tình cảm đã thúc đẩy tôi viết mà lượng thứ cho ngòi bút kém cỏi của tôi.
+        Tình cảm này, tôi xin nói trước, là sự bênh vực của tôi đối với cha
+        mình.
+      </p>
+      <p>
+        Cha tôi tên là Thuấn, con trưởng họ Nguyễn. Trong làng, họ Nguyễn là họ
+        lớn, số lượng trai đinh có lẽ chỉ thua họ Vũ. Ông nội tôi trước kia học
+        Nho, sau về dạy học. Ông nội tôi có hai vợ. Bà cả sinh được cha tôi ít
+        ngày thì mất, vì vậy ông tôi phải tục huyền. Bà hai làm nghề nhuộm vải,
+        tôi không tường mặt, chỉ nghe nói là một người đàn bà cay nghiệt vô
+        cùng. Sống với dì ghẻ, cha tôi trong tuổi niên thiếu đã phải chịu đựng
+        nhiều điều cay đắng. Năm mười hai tuổi, cha tôi trốn nhà ra đi. Ông vào
+        bộ đội, ít khi về nhà.
+      </p>
+      <p>
+        Khoảng năm... cha tôi về làng lấy vợ. Chắc chắn cuộc hôn nhân này không
+        do tình yêu. Mười ngày nghỉ phép bề bộn công việc. Tình yêu đòi hỏi điều
+        kiện, trong đó thời gian cũng cần.
+      </p>
+      <p>
+        Khi lớn lên, tôi chăng biết gì về cha mình cả. Tôi chắc mẹ tôi hiểu về
+        cha tôi cũng ít. Cả đời cha tôi gắn với súng đạn, chiến tranh.
+      </p>
+      <p>
+        Tôi đi làm, lấy vợ, sinh con. Mẹ tôi già đi. Cha tôi vẫn đi biền biệt.
+        Thỉnh thoảng cha tôi cũng ghé về nhà, nhưng những lần về đều ngắn. Cả
+        những bức thư cha tôi gửi về cũng ngắn, dầu rằng dưới những dòng chữ,
+        tôi biết ở đấy ẩn chứa nhiều tình thương cùng với âu lo.
+      </p>
+      <p>
+        Tôi là con một, tôi đã chịu ơn cha tôi về đủ mọi mặt. Tôi được học hành,
+        được du ngoại. Cả những cơ sở vật chất gia đình cũng do cha tôi lo liệu.
+        Ngôi nhà tôi ở ven nội, xây dựng trước khi cha tôi về hưu tám năm. Đấy
+        là một biệt thự đẹp nhưng khá bất tiện, tôi đã xây cất dựa theo thiết kế
+        của một chuyên gia kiến trúc trứ danh, bạn của cha tôi, ông này đại tá,
+        chỉ thạo việc xây doanh trại.
+      </p>
+      <p>Năm bẩy mươi tuổi, cha tôi về hưu với hàm thiếu tướng.</p>
+      <p>
+        Mặc dầu biết trước, tôi vẫn ngỡ ngàng khi cha tôi về. Mẹ tôi đã lẫn (bà
+        hơn cha tôi sáu tuổi), vì vậy thực ra ở nhà chỉ có mình tôi có những
+        tình cảm đặc biệt với sự kiện này. Mấy đứa con tôi còn bé. Vợ tôi biết
+        ít về ông, vì hai chúng tôi lấy nhau khi mà cha tôi đang bặt tin tức.
+        Bấy giờ đang có chiến tranh. Tuy thế, ở trong gia đình, cha tôi bao giờ
+        cũng là hình ảnh của niềm vinh dự, tự hào. Cả ở trong họ, trong làng,
+        tên tuổi cha tôi cũng được mọi người ngưỡng vọng.
+      </p>
+      <p>
+        Cha tôi về nhà, đồ đạc đơn sơ. Cha tôi khỏe. Ông bảo: "Việc lớn trong
+        đời cha làm xong rồi!” Tôi bảo: "Vâng". Cha tôi cười. Tâm trạng xúc động
+        lây sang cả nhà, mọi người chuếnh choáng đến nửa tháng trời, sinh hoạt
+        tùy tiện, có hôm mười hai giờ đêm mới ăn cơm chiều. Khách khứa đến chơi
+        nườm nượp. Vợ tôi bảo: "Không để thế được". Tôi cho mổ lợn, đi mời họ
+        hàng làng nước đến để chia vui. Làng tôi tuy gần thành phố nhưng mà tập
+        tục nông thôn còn giữ. Đúng một tháng sau, tôi mới có dịp ngồi với cha
+        tôi bàn chuyện gia đình.
+      </p>
+      <p>II</p>
+      <p>
+        Trước khi kể tiếp, xin nói về gia đình tôi. Tôi ba mươi bẫy tuổi, là kỹ
+        sư, làm việc ở Viện Vật lý. Thủy, vợ tôi, là bác sĩ, làm việc ở bệnh
+        viện sản. Chúng tôi có hai con gái, đứa mười bốn, đứa mười hai. Mẹ tôi
+        lẫn lộn, suốt ngày chỉ ngồi một chỗ.
+      </p>
+      <p>
+        Ngoài những người trên, gia đình tôi còn có ông Cơ và cô con gái gàn dở
+        của ông. Ông Cơ sáu mươi tuổi, quê Thanh Hóa. Vợ tôi gặp cha con ông khi
+        nhà của họ bị cháy, cơ nghiệp mất sạch. Thấy cha con ông tốt bụng, đáng
+        thương, vợ tôi sắp xếp cho họ ở với chúng tôi. Cha con ông ở dưới nhà
+        ngang, sinh hoạt riêng rẽ nhưng mọi chế độ thì do vợ tôi chu cấp. Không
+        có hộ khẩu, họ không có những tiêu chuẩn lương thực, thực phẩm như những
+        người dân khác trong thành phố. Ông Cơ hiền lành, chịu khó. Thường ông
+        đảm nhiệm việc chăm vườn tược, lợn gà và đàn chó giống. Nhà tôi nuôi chó
+        béc-giê. Tôi cũng không ngờ việc kinh doanh chó lại thu lợi lớn. Khoản
+        thu này trội nhất trong nhà. Cô Lài mặc dầu gàn dở nhưng lại xốc vác và
+        nội trợ giỏi. Vợ tôi dạy cô cách thức nấu bóng, nấu nấm, nấu gà hầm. Cô
+        bảo: " Cháu chẳng ăn thế bao giờ". Cô không ăn thật. Cả hai vợ chồng và
+        hai con tôi không phải lo toan công việc gia đình. Từ ăn uống, giặt giũ,
+        tất cả giao cho hai người giúp việc. Vợ tôi cầm chịch các khoản chi
+        tiêu. Tôi bận nhiều việc, hiện đang vùi đầu vào công trình ứng dụng điện
+        phân. Cũng cần nói thêm: quan hệ tình cảm của vợ chồng tôi êm thấm. Thủy
+        có học thức, sống theo lối mới. Chúng tôi suy nghĩ độc lập, nhìn nhận
+        vấn đề xã hội tương đối giản dị. Thủy am tường các việc lo liệu kinh tế
+        cũng như dạy dỗ con cái. Còn tôi, hình như tôi khá cổ hủ, đầy bất trắc
+        và thô vụng.
+      </p>
+      <p>III</p>
+      <p>
+        Tôi quay lại đoạn kể cha con tôi bàn việc gia đình. Cha tôi bảo: "Nghỉ
+        rồi, cha làm gì?" Tôi bảo: "Viết hồi ký". Cha tôi bảo: “Không!”. Vợ tôi
+        bảo: “Cha nuôi vẹt xem". Trên phố dạo này nhiều người nuôi chim hoạ mi,
+        chim vẹt. Cha tôi bảo: "Kiếm tiền à?" Vợ tôi không trả lời. Cha tôi bảo:
+        "Để xem đã!" Cha tôi cho mỗi người trong nhà bốn mét vải lính. Ông Cơ và
+        cả cô Lài cũng thế. Tôi cười: "Cha bình quân! " Cha tôi bảo: "Đấy là lẽ
+        sống". Vợ tôi bảo: "Cả nhà đồng phục thì thành doanh trại". Mọi người
+        cười ồ.
+      </p>
+      <p>
+        Cha tôi muốn ở một phòng dưới dãy nhà ngang giống như mẹ tôi. Vợ tôi
+        không chịu. Cha tôi buồn. Việc để mẹ tôi ăn riêng, ở riêng làm ông bứt
+        rứt. Vợ tôi bảo: 'Tại mẹ lẫn". Cha tôi đăm chiêu. Tôi cũng không hiểu
+        sao hai đứa con gái của tôi ít gần ông nội. Tôi cho chúng học ngoại ngữ,
+        học nhạc. Chúng lúc nào cũng bận. Cha tôi bảo: "Các cháu có sách gì mang
+        cho ông đọc". Cái Mi cười. Còn cái Vi bảo: "Ông thích đọc gì?" Cha tôi
+        bảo: " Cái gì dễ đọc". Hai đứa bảo: "Thế thì không có". Tôi đặt báo hàng
+        ngày cho ông. Cha tôi không thích văn học. Văn chương nghệ thuật bây giờ
+        đọc rất khó vào.
+      </p>
+      <p>
+        Một hôm tôi đi làm về, cha tôi đứng ở dãy nhà vợ tôi nuôi chó và gà công
+        nghiệp. Trông ông không vui. Tôi hỏi: " Có chuyện gì thế?” Ông bảo: "ông
+        Cơ và cô Lài vất vả quá. Họ làm không hết việc, cha muốn giúp họ được
+        không?" Tôi bảo: "Để con hỏi Thủy". Vợ tôi bảo: "Cha là tướng, về hưu
+        cha vẫn là tướng. Cha là chỉ huy. Cha mà làm lính thì dễ loạn cờ". Cha
+        tôi không nói năng gì. Cha tôi nghỉ hưu nhưng khách khứa nhiều. Điều đó
+        làm tôi ngạc nhiên, thậm chí thích thú. Vợ tôi bảo: "Đừng mừng... họ chỉ
+        nhờ vả. Cha ạ, cha đừng làm gì quá sức". Cha tôi cười: "Chẳng có gì
+        đâu... cha chỉ viết thư. Thí dụ: 'Thân gửi N. tư lệnh quân khu... Tôi
+        viết thư này cho cậu... Hơn năm mươi năm, đây là lần đầu tôi ăn tết mồng
+        ba tháng ba dưới mái nhà mình. Hồi ở chiến trường, hai đứa chúng mình đã
+        từng mơ ước v. v... Cậu nhớ cái xóm ven đường, cô Huệ đã làm bánh trôi
+        bằng bột mì mốc. Bột mì bê bết trên lưng v.v... Nhân đây M. là người tôi
+        quen, muốn được công tác dưới quyền của cậ u v.v... ". Cha viết như thế
+        được không?" Tôi bảo: "Được". Vợ tôi bảo: “Không được! " Cha tôi gãi
+        cằm: “Người ta nhờ mình".
+      </p>
+      <p>
+        Cha tôi thường bỏ thư viết vào phong bì đựng công văn bằng giấy cứng, cỡ
+        20x30, trên có in chữ Bộ quôé phòng, rồi đưa cho người nhờ vả mang đi.
+        Sau ba tháng, hết sạch loại phong bì ấy. Ông làm phong bì bằng giấy bìa
+        học sinh cũng to bằng cỡ 20x30. Một năm sau, ông cho thư vào thứ phong
+        bì bình thường vẫn bán ở quầy bưu điện, giá năm đồng một chục cái.
+      </p>
+      <p>
+        Tháng bảy năm ấy, tức là ba tháng sau ngày cha tôi về nghỉ, chú họ tôi,
+        ông Bổng, cưới vợ cho con.
+      </p>
+      <p>IV</p>
+      <p>
+        Ông Bổng với cha tôi là anh em cùng cha khác mẹ. Thằng Tuân con trai ông
+        làm nghề đánh xe bò. Hai cha con đều ghê gớm, to như hộ pháp, ăn nói
+        văng mạng. Thằng Tuân lấy vợ lần này là lần thứ hai. Vợ trước bị đánh
+        đau quá, bỏ đi. Ra tòa, nó khai là vợ theo trai, tòa phải chịu. Cô vợ
+        lần này tên là Kim Chi, làm nghề nuôi dạy trẻ, con nhà có học hẳn hoi,
+        xí xớn thế nào nghe nói có thai với nó. Kim Chi là cô gái đẹp, làm vợ
+        thằng Tuân đúng là "hoa nhài cắm bãi cứt trâ u ". Thâm tâm chúng tôi
+        không ưa cha con ông Bổng, khốn nỗi "một giọt máu đào hơn ao nước lã",
+        giỗ tết vẫn phải đi lại, nhưng mà ngày thường cũng nhạt. Ông Bổng hay
+        nói: "Quân trí thức khốn nạn! Rẻ dân lao động! Nể bố nó, không tôi cạch
+        cửa!" Nói thế thôi, ông Bổng vẫn sang vay tiền. Vợ tôi khe khắt, bao giờ
+        cũng bắt ông phải ký cược. Ông Bổng rất ức, ông nói: "Mình là chú nó,
+        trót vay nợ nó mà nó cư xử hệt như địa chủ". Nhiều món nợ ông cứ lờ đi
+        không trả. Cưới vợ cho con, ông Bổng nói với cha tôi: "Anh phải đứng ra
+        chủ hôn, bố cháu Kim Chi vụ phó, anh là tướng, thế là "môn đăng hộ đôí
+        ". Sau này các cháu nhờ phúc của ông, như tôi là thằng phu xe, báu gì. "
+        Cha tôi bằng lòng.
+      </p>
+      <p>
+        Đám cưới ngoại ô lố lăng và khá dung tục. Ba ô tô. Thuốc lá đầu lọc
+        nhưng gần cuối tiệc hết sạch, phải thay bằng thuốc lá cuốn. Năm mươi mâm
+        cỗ nhưng ế mười hai. Chàng rể mặc comlê đen, cravat đỏ. Tôi phải cho
+        mượn cái cravat đẹp nhất trong tủ áo. Nói là mượn, chắc gì đòi được. Phù
+        rể là sáu thanh niên ăn mặc hệt nhau, đều quần bò, râu ria rất hãi. Đầu
+        tiệc là dàn nhạc sống chơi bài Ave Maria. Một anh cùng hợp tác xã xe bò
+        thằng Tuân nhảy lên đơn ca một bài khủng khiếp:
+      </p>
+      <p>Ừ... ê... cái con gà quay</p>
+      <p>Ta đi lang thang khắp miền giang hồ</p>
+      <p>Tìm nơi nào có tiền</p>
+      <p>Tiền ơi, mau vào túi ta</p>
+      <p>Ừ... ê... cái con gà rù...</p>
+      <p>
+        Sau đó đến lượt cha tôi. Ông luống cuống, khổ sở. Bài văn chuẩn bị công
+        phu hóa thừa. Kèn clarinét đệm rất bậy bạ sau dấu chấm câu. Pháo ầm ĩ.
+        Trẻ con bình luận nhảm nhí. Cha tôi nhảy cóc từng đoạn. Ông cầm tờ giấy
+        mà run bắn người. Một sự ô hợp láo nháo thản nhiên rất đời, thô thiển,
+        thậm chí còn ô trọc nữa làm ông kinh hãi, đau đớn. Ông vụ phó thông gia
+        cũng đâm hoảng hốt, luống cuống, làm đổ cả rượu xuống váy cô dâu. Chẳng
+        nghe thấy gì. Dàn nhạc sống át đi bằng nhừng ca khúc vui vẻ quen thuộc
+        của các ban nhạc Beatles và Abba. Sau đó, rắc rối đầu tiên đến với cha
+        tôi là việc Kim Chi sinh cháu chỉ sau hôm cưới chục ngày. Gia đình ông
+        Bổng bê bối. Ông say rượu, tống cổ cô con dâu ra cửa. Thằng Tuân cầm dao
+        chém bố, may trượt.
+      </p>
+      <p>
+        Vô phương, cha tôi phải đón cháu dâu về nhà. Gia đình tôi thêm hai khẩu.
+        Vợ tôi không nói năng gì Cô Lài thêm một trách nhiệm. Được cái cô Lài vô
+        tâm, tính lại yêu trẻ.
+      </p>
+      <p>V</p>
+      <p>
+        Một tối, tôi đang đọc Sputnhich, cha tôi lặng lẽ đi vào. Ông bảo: “Cha
+        muốn nói chuyện với con". Tôi pha cà phê, cha tôi không uống. Ông hỏi:
+        “Con có để ý công việc của Thủy không con? Cha cứ rờn rợn".
+      </p>
+      <p>
+        Vợ tôi làm việc ở bệnh viện sản, công việc là nạo phá thai. Hàng ngày
+        các rau thai nhi bỏ đi, Thủy cho vào phích đá đem về. Ông Cơ nấu lên cho
+        chó, cho lợn. Thực ra điều này tôi biết nhưng cũng bỏ qua, chẳng quan
+        trọng gì. Cha tôi dắt tôi xuống bếp, chỉ vào nồi cám, trong đó có các
+        mẩu thai nhi bé xíu. Tôi lặng đi. Cha tôi khóc. Ông cầm phích đá ném vào
+        đàn chó béc giê: "Khốn nạn! Tao không cần sự giàu có này”. Đàn chó sủa
+        vang. Ông bỏ lên nhà. Vợ tôi di vào nói với ông Cơ: "Sao không cho vào
+        máy xát? Sao để ông biết?!' ông Cơ bảo: “Cháu quên, cháu xin lỗi mợ".
+      </p>
+      <p>
+        Tháng mười hai, vợ tôi gọi người bán sạch đàn chó béc giê. Vợ tôi bảo:
+        "Anh thôi hút thuốc Galăng đi. Năm nay nhà mình hụt thu hai mươi bảy
+        nghìn, chi lạm mười tám nghìn, cộng là bốn mươi lăm nghìn". Kim Chi hết
+        thời gian nghỉ, đi làm. Nó bảo: “Cám ơn anh chị, em đưa con về nhà đây".
+        Tôi hỏi: "Về đâu?" Thằng Tuân đã bị bắt giam vì tội côn đồ. Kim Chi đưa
+        con về nhà của bố mẹ đẻ. Cha tôi đưa về tận nơi bằng xe tắcxi thuê
+        riêng. Cha tôi ở chơi với ông vụ phó bố của Kim Chi một ngày. Ông này
+        vừa đi công tác ở ấn Độ về, ông biếu cha tôi một mảnh lụa hoa và nửa
+        lạng cao tổng hợp. Cha tôi cho cô Lài mảnh lụa hoa, cho ông Cơ nửa lạng
+        cao.
+      </p>
+      <p>VI</p>
+      <p>
+        Trước tết Nguyên đán, ông Cơ nói với hai vợ chồng tôi: "Cháu xin cậu mợ
+        một việc". Vợ tôi hỏi: "Việc gì?" ông Cơ nói vòng vèo, chẳng đâu vào
+        đâu. Đại để ông muốn về thăm quê. ở với chúng tôi sáu năm, cũng có dành
+        dụm, ông Cơ muốn về bốc mộ bà vợ. Để lâu ngày chắc ván đã sụt. “Nghĩa tử
+        là nghĩa tận". ở thành phố, cũng muốn về thăm họ hàng làng xóm cho nó
+        mát mặt. Bây giờ đã vậy, sau này "cáo chết ba năm quay đầu về núi". Vợ
+        tôi cắt lời: "Thế bao giờ đi?" ông Cơ gãi đầu: "Đi mười ngày, về Hà Nội
+        trước hăm ba tết". Vợ tôi tính: "Được. Anh Thuần này (Thuần là tên tôi),
+        anh có nghỉ phép được không?” Tôi bảo: "Được". Ông Cơ bảo: "Chúng cháu
+        muốn mời ông về quê chơi. Như đi du lịch". Vợ tôi bảo: "Tôi không thích.
+        Thế ông bảo sao?" ông Cơ ' bảo: "Ông đồng ý rồi. Không có ông, cháu cũng
+        chẳng nhớ đến việc cải mộ nhà cháu”. Vợ tôi hỏi: "Thế hai cha con có bao
+        nhiêu tiền?" ông Cơ bảo: "C'háu có ba nghìn, ông cho hai nghìn là năm".
+        Vợ tôi bảo: "Được, đừng lấy hai nghìn của ông, tôi bù cho hai nghìn ấy,
+        lại cho thêm năm nghìn. Thế là hai cha con có chục nghìn. Đi được".
+      </p>
+      <p>
+        Trước hôm đi, vợ tôi làm cơm. Cả nhà ngồi ăn, có cả ông Cơ, cô Lài. Cô
+        Lài vui lắm, mặc bộ quần áo mới may bằng vải cha tôi cho hôm về. Cái Mi
+        và Cái Vi trêu: "Chị Lài xinh nhất". Cô Lài cười thỏn thẻn: "Chả phải.
+        Mợ mới xinh nhất". Vợ tôi bảo: "Em đi chú ý đỡ ông những khi tàu xe".
+        Cha tôi bảo: "Hay thôi không đi?" ông Cơ giãy nảy: "Chết, cháu đã điện
+        rồi: Mang tiếng chết". Cha tôi thở dài: "Tôi có tiếng gì mà mang?”
+      </p>
+      <p>VII</p>
+      <p>
+        Cha tôi đi Thanh Hóa cùng ông Cơ và cô Lài vào sáng chủ nhật. Tối thứ
+        hai, tôi đang xem tivi thì nghe tiếng "huỵch”, vội chạy ra ngoài thấy mẹ
+        tôi ngã gục góc vườn. Mẹ tôi lẫn bốn năm nay, cho ăn biết ăn, cho uống
+        biết uống, phải giục đi ngoài. Mọi hôm có cô Lài săn sóc không sao. Hôm
+        nay, tôi sơ ý, cho ăn mà không giục đi ngoài. Tôi đỡ mẹ tôi vào, bà cụ
+        cứ gục mặt xuống. Không thấy có vết đau. Nửa đêm tôi dậy, thấy mẹ tôi
+        lạnh toát, mắt dại đi. Tôi sợ, gọi vợ tôi. Thủy bảo: "Mẹ già rồi". Hôm
+        sau mẹ tôi không ăn, hôm sau nữa, cũng không ăn, không chủ động đi
+        ngoài. Tôi giặt giũ, thay chiếu. Có ngày mười hai lần. Tôi biết Thủy và
+        hai con tôi ưa sạch sẽ nên tôi thay giặt luôn, không giũ ở nhà mà mang
+        ra tận kênh đào. Thuốc đổ vào cứ trớ ra.
+      </p>
+      <p>
+        Hôm thứ bẩy, mẹ tôi bỗng ngồi dậy được. Đi lững thững một mình ra vườn.
+        ăn được cơm. Tôi bảo: " Mừng rồi". Vợ tôi không nói năng gì, chiều hôm
+        ấy thấy mang về chục mét vải trắng, lại gọi cả thợ mộc. Tôi hỏi: "Chuẩn
+        bị à?" Vợ tôi bảo: "Không". Hai hôm sau, mẹ tôi nằm liệt, lại bỏ ăn, lại
+        đi ngoài như cũ. Người dốc nhanh, thải ra thứ nước nâu sền sệt rất khắm.
+        Tôi đổ sâm. Vợ tôi bảo: “Đừng đổ sâm, khổ cho mẹ". Tôi òa khóc. Rất lâu
+        tôi mới òa khóc như thế. Vợ tôi nín lặng, rồi lại bảo: "Tùy anh”. Ông
+        Bổng sang thăm. Ông nói: “Bà ấy cứ xoay ngang, xoay dọc trên giường như
+        thế này là gay go lắm đấy!” Lại hỏi: “Chị ơi, chị có nhận ra em không?”.
+        Mẹ tôi bảo: " Có". Lại hỏi: "Thế em là ai?" Mẹ tôi bảo: "Là người". Ông
+        Bổng khóc òa lên: "Thế là chị thương em nhất. Cả làng cả họ gọi em là đồ
+        chó. Vợ em gọi em là đồ đểu. Thằng Tuân gọi em là đồ khốn nạn. Chỉ có
+        chị gọi em là người". Lần đầu tiên, cái ông chú đánh xe bò, lỗ mãng, táo
+        tợn, làm đủ mọi điều phi nhân bất nghĩa hóa thành đứa trẻ ngay trước mắt
+        tôi.
+      </p>
+      <p>VIII</p>
+      <p>
+        Cha tôi về đến nhà thì sáu tiếng sau mẹ tôi mất. Ông Cơ và cô Lài nói:
+        "Tại chúng cháu. Chúng cháu ở nhà thì bà không mất". Vợ tôi bảo: "Nói
+        nhảm". Cô Lài khóc: "Bà ơi, bà đánh lừa con bà đi! Sao bà không cho con
+        đi hầu bà?" ông Bổng cười: "Mày muốn đi hầu bà thì đi, tao cho đóng
+        ván”. Khi liệm mẹ tôi, cha tôi khóc. Ông hỏi ông Bổng: "Sao người bà ấy
+        rút nhanh thế? Người già ai cũng chết khổ như thế này à?" ông Bổng bảo:
+        “Anh lẩm cẩm. Hôm nào nước mình cũng có hàng nghìn người chết khổ nhục
+        vật vã đau đớn. Mỗi lính tráng các anh, "đòm" phát là sướng".
+      </p>
+      <p>
+        Tôi cho bắc rạp, bảo thợ mộc đóng quan tài. Ông Cơ cứ loay hoay bên đống
+        ván vợ tôi cho xẻ hôm trước. Ông thợ mộc quát: "Sợ chúng ông ăn cắp gỗ
+        à?" ông Bổng hỏi: "Ván mấy phân?" Tôi bảo: "Bốn phân". Ông Bổng bảo:
+        "Mất mẹ bộ xa lông Ai lại đi đóng quan tài bằng gỗ dổi bao giờ? Bao giờ
+        bốc mộ, cho chú bộ ván". Cha tôi ngồi âm thầm, trông rất đau đớn. Ông
+        Bổng bảo: "Chị Thủy luộc cho tôi con gà, nấu hộ nồi xôi". Vợ tôi hỏi:
+        "Mấy cân gạo hả chú?" Ông Bổng bảo: "Mẹ mày, sao hôm nay cứ ngọt xớt
+        thế? Ba cân"! Vợ tôi bảo tôi: "Họ hàng nhà anh kinh bỏ mẹ".
+      </p>
+      <p>
+        Ông Bổng hỏi tôi: "Nhà này ai chủ trì kinh tê?" Tôi bảo: "Vợ cháu". Ông
+        Bổng bảo: "Đấy là ngày thường. Tao hỏi đám ma này thì ai chủ trì kinh
+        tế"" Tôi bảo: "Vợ cháu". Ông Bổng bảo: "Không được con ơi, khác máu tanh
+        lòng. Tao bảo bố mày nhé". Tôi bảo: “Ông dể con". Ông Bổng bảo: "Đưa tao
+        bốn nghìn, mày định làm bao nhiêu mâm?" Tôi bảo: "Mười mâm". Ông Bổng
+        bảo: "Không đủ cho đô tùy rửa ruột. Mày bàn với vợ mày đi. Bốn mươi
+        mâm". Tôi đưa cho ông bốn nghìn rồi vào nhà. Vợ tôi bảo: “Em nghe hết
+        rồi, em tính ba chục mâm, tám trăm đồng một mâm, ba tám hai tư. Hai tư
+        nghìn, phụ phí sáu nghìn. Việc mua bán em lo. Cỗ giao cho cô Lài. Đừng
+        nghe ông Bổng, lão ấy đểu lắm". Tôi bảo: "ông Bổng cầm bốn nghìn rồi".
+        Vợ tôi bảo: "Buồn anh lắm". Tôi bảo: "Anh đòi lại nhé". Vợ tôi bảo:
+        "Thôi, coi như trả công. Lão ấy tốt nhưng nghèo”.
+      </p>
+      <p>
+        Phường bát âm đến bốn người. Cha tôi ra tiếp. Nhập quan lúc bốn giờ
+        chiều. Ông Bổng cạy miệng mẹ tôi cho vào chín đồng vừa tiền chinh Khải
+        Định, vừa tiền một hào nhôm. Ông bảo: “Để đi đò". Lại cho vào cỗ bài tổ
+        tôm, có lẫn cả mấy quân tam cúc. Ông bảo: "Không sao, ngày xưa bà ấy vẫn
+        chơi tam cúc".
+      </p>
+      <p>
+        Đêm ấy, tôi thức canh quan tài mẹ tôi, ngẫm nghĩ lan man đủ điều. Cái
+        chết sẽ đến với mỗi chúng ta, chẳng trừ ai cả. Ngoài sân, ông Bổng với
+        mấy bác đô tùy ngồi đánh tam cúc àn tiền. Khi nào kết tốt đen, ông Bổng
+        lại chạy vào vái quan tài mẹ tôi: “Lạy chị, chị phù hộ cho em để em vét
+        thật nhẵn túi chúng nó". Cái Mi, cái Vi cũng thức với tôi. Cái Mi hỏi:
+        "Sao chết đi qua đò cũng phẫi trả tiền? Sao lại cho tiền vào miệng bà?"
+        Cái Vi bảo: "Đấy có phải ngậm miệng ăn tiền không bố"" Tôi khóc: "Các
+        con không hiểu đâu. Bố cũng không hiểu, đấy là mê tín". Cái Vi bảo: "Con
+        hiểu đấy. Đời người cần không biết bao nhiêu là tiền. Chết cũng cần".
+        Tôi thấy cô đơn quá. Các con tôi cũng cô đơn. Cả đám đánh bạc, cả cha
+        tôi nữa.
+      </p>
+      <p>IX</p>
+      <p>
+        Từ nhà tôi ra nghĩa dịa đi tắt chỉ năm trăm mét nhưng đi đường chính qua
+        cổng làng phải hai cây số. Đường bé, không đẩy xe đòn được mà phải
+        khiêng vai. Đô tùy thay nhau đến ba chục người, có nhiều người vợ chồng
+        tôi không biết tên gì. Họ khênh quan tài hồn nhiên như việc bình thường
+        vẫn làm, như khênh cột nhà. Vừa đi vừa nhai trầu, hút thuốc, tán chuyện.
+        Khi nghỉ, đứng ngồi ngổn ngang ngay bên quan tài. Có người nằm lăn ra
+        nói: "Mát thật, không bận cứ ngủ ở đây đến tối". Ông Bổng bảo: "Các bố
+        ơi, đi đi còn về nhắm". Thế là đi. Tôi chống gậy giật lùi trước quan tài
+        theo tục lệ, “cha đưa mẹ đón”. Ông Bổng bảo: "Bao giờ tôi chết, đô tùy
+        của tôi toàn dân cờ bạc, cỗ không thịt lợn mà thịt chó". Cha tôi bảo:
+        "Chú ơi, lúc này mà chú đùa à?" Ông Bổng nín bặt, lại khóc: "Chị ơi, chị
+        đánh lừa em chị đi... Chị bỏ em chị đi... ". Tôi nghĩ:
+      </p>
+      <p>
+        "Sao lại đánh lừa? Chẳng lẽ người chết đều đã đánh lửa người sống cả
+        sao? Bãi tha ma này toàn quân lừa lọc?"
+      </p>
+      <p>
+        Chôn cất xong, mọi người về nhà. Bày ra một lúc hai mươi tám mâm. Nhìn
+        mâm cỗ, tôi thật kính trọng cô Lài. Mâm nào cũng gọi: "Lài đâu?" Cô Lài
+        miệng dạ tíu tít, chạy ra bê rượu, bê thịt. Đến tối, cô Lài tắm giặt,
+        mặc quần áo mới ra hương án khóc: "Bà ơi, cháu xin lỗi bà, cháu không
+        đưa bà ra đồng... Hôm trước bà thèm canh cua, cháu ngại làm, bà chẳng
+        được ăn... Bây giờ đi chợ, cháu biết mua quà cho ai?... " Tôi thấy đắng
+        ngắt. Tôi nhớ đã chục năm nay tôi chưa lần nào mua được cho mẹ chiếc
+        bánh hay là gói kẹo. Cô Lài lại khóc: "Cháu ở nhà thì bà có chết không
+        bà?" Vợ tôi bảo: "Đừng khóc”. Tôi cáu: "Cứ để cho cô ấy khóc, đám ma
+        không có tiếng khóc buồn lắm. Nhà mình có ai biết khóc bà cụ thế đâu?”
+        Vợ tôi bảo: "Ba mươi hai mâm. Anh phục em tính sát không?" Tôi bảo: "
+        Sát”. Ông Bổng bảo: "Tôi đi xem giờ. Bà cụ được một cái nhập mộ, hai cái
+        trùng tang, một cái thiên di. Có yểm bùa không?" Cha tôi bảo: "Bùa con
+        khỉ. Trong đời mình, tôi chôn ba nghìn người chẳng có người nào thế
+        này". Ông Bổng bảo: "Thế là sướng, "đòm" phát là xong". Ông giơ một ngón
+        tay trỏ làm hiệu bóp cò.
+      </p>
+      <p>X</p>
+      <p>
+        Tết năm đó, nhà tôi không mua hoa đào, không gói bánh chưng. Chiều mồng
+        hai, đơn vị cũ của cha tôi cho người về viếng mẹ tôi. Biếu năm trăm
+        đồng. Ông Chưởng, phó của cha tôi bây giờ lên tướng, ra mộ thắp hương.
+        Anh Thanh đại úy cần vụ đi theo rút súng bắn ba phát lên trời. Sau này,
+        trẻ con trong làng kháo bộ đội bắn hai mốt phát đại bác viếng bà Thuấn.
+        Ông Chưởng hỏi cha tôi: "Anh muốn về thăm đơn vị dối già không? Tháng
+        năm tập trận. Đơn vị cho xe về đón". Cha tôi bảo: “Được". Ông Chưởng đi
+        thăm cơ ngơi nhà tôi, có ông Cơ hướng dẫn. Ông Chưởng bảo cha tôi: "Cơ
+        ngơi của anh ác thật. Vườn cây, ao cá, chuồng lợn, chuồng gà, biệt thự.
+        Thế là vững tâm". Cha tôi bảo: "Con tôi làm đấy". Tôi bảo: "Đấy là vợ
+        cháu". Vợ tôi bảo: "Cô Lài chứ! " Cô Lài cười thỏn thẻn, dạo này dầu cứ
+        gật gật liên hồi như bị động kinh: "Chả phải". Cha tôi đùa: "Thế thì do
+        mô hình V.A.C ". Sáng mồng ba, Kim Chi đi xích lô bế con về thăm. Vợ tôi
+        mừng tuổi một nghìn. Cha tôi hỏi: “Thằng Tuân có thư từ gì không?" Kim
+        Chi bảo: "Không". Cha tôi bảo: "Lỗi ở bác đấy. Tao không biết mày có
+        chửa". Vợ tôi bảo: "Chuyện ấy là thường. Bây giờ làm gì còn có trinh nữ.
+        Con làm ở bệnh viện sản, con biết". Kim Chi ngượng. Tôi bảo: "Đừng nói
+        thế, nhưng mà làm trinh nữ thì mệt thật". Kim Chi khóc: "Anh ơi, đàn bà
+        chúng em nhục lắm. Đẻ con gái ra em cứ nát ruột nát gan". Vợ tôi bảo:
+        "Tôi còn hai con gái cơ". Tôi bảo: "Thế các người tưởng làm đàn ông thì
+        không nhục à?" Cha tôi bảo: "Đàn ông thằng nào có tâm thì nhục.. Tâm
+        càng lớn, càng nhục". Vợ tôi bảo: “Nhà mình nói năng như điên khùng cả.
+        Thôi đi ăn. Hôm nay có cô Kim Chi, tôi đãi mỗi người một con gà hầm tâm
+        sen. Tâm đấy. Ăn là trên hết".
+      </p>
+      <p>XI</p>
+      <p>
+        Gần nhà tôi ở có cậu Khổng, trẻ con gọi là Khổng Tử. Khổng làm ở xí
+        nghiệp nước mắm nhưng lại thích thơ, làm thơ gửi báo Văn nghệ. Khổng hay
+        sang chơi. Khổng bảo: "Thơ siêu nhất”. Cậu đọc cho tôi nghe Loócca,
+        Uýtxman v. v... Tôi không thích Khổng, ngờ ngợ cậu ta sang chơi vì một
+        cái gì phiêu lưu còn hơn cả thơ ca nữa. Một bận, thấy trong giường của
+        vợ tôi có một tập thơ chép tay. Vợ tôi bảo: "Thơ của cậu Khổng, anh có
+        đọc không?" Tôi lắc đầu. Vợ tôi bảo: “Anh già rồi". Bất giác tôi thoáng
+        rùng mình. Một hôm bận trực cơ quan nên tôi về muộn. Cha tôi đón cổng,
+        ông bảo: “Thằng Khổng sang chơi từ chập tối. Nó với vợ mày cứ rúc rích
+        với nhau, bây giờ chưa về, chướng quá". Tôi bảo: "Cha đi ngủ đi, để ý
+        làm gì?" Cha tôi lắc đầu, bỏ đi lên gác. Tôi dắt xe máy ra đường, phóng
+        lang thang khắp phố cho kỳ hết xăng. Tôi dắt xe đến ngồi ở một góc vườn
+        hoa như một tên du thủ du thực. Có một cô mặt đánh phấn đi ngang qua
+        hỏi: "Ông anh ơi, có đi chơi không?" Tôi lắc đầu. Khổng có ý tránh mặt
+        tôi. Ông Cơ ghét lắm, một hôm bảo tôi: "Cháu đánh nó nhé?" Suýt tôi gật
+        đầu. Lại nghĩ: "Thôi". Tôi vào thư viện mượn thử ít sách. Đọc Loócca,
+        Uýtxman... tôi cứ mơ hồ thấy những nghệ sĩ trác tuyệt là những con người
+        cô đơn khủng khiếp. Bỗng thấy thằng Khổng có lý. Chỉ tức nó đểu. Sao nó
+        không đưa thơ nó cho người khác xem mà lại đưa cho vợ tôi? Cha tôi bảo:
+        "Anh nhu nhược. Duyên do là anh đếch sống được một mình”. Tôi bảo:
+        "Không phải, cuộc đời nhiều trò dùa lắm". Cha tôi bảo: "Anh cho là trò
+        đùa à?" Tôi bảo: "Không phải trò đùa, nhưng cũng không phải nghiêm
+        trọng". Cha tôi bảo: "Sao tôi cứ như lạc loài?” Cơ quan định cử tôi đi
+        công tác phía Nam. Tôi bảo vợ tôi: "Anh đi nhé?" Vợ tôi bảo: "Đừng đi.
+        Mai anh sửa cửa nhà tắm, cái cửa hỏng rồi. Hôm nọ cái Mi đang tắm, thằng
+        Khổng đi qua định giở trò đểu làm nó hết hồn. Thằng khốn nạn ấy em cấm
+        cửa rồi". Vợ tôi òa khóc: "Em thật có lỗi với anh, với con". Tôi khó
+        chịu quay đi. Nếu có cái Vi bây giờ thì nó sẽ hỏi tôi rằng: "Bố ơi, đấy
+        có phải nước mắt cá sấu không?"
+      </p>
+      <p>XII</p>
+      <p>
+        Tháng Năm, đơn vị cũ cho xe về đón cha tôi. Anh Thanh đại úy cầm thư của
+        ông Chưởng về. Cha tôi cầm thư run run. Thư viết: "... Chúng tôi cần
+        anh, mong anh... nhưng anh đi được thì đi, không ép". Tôi nghĩ cha tôi
+        không nên đi nữa nhưng nói ra bất tiện. Cha tôi già sụp hẳn đi từ khi về
+        hưu. Hôm nay cầm thư, thấy ông nhanh nhẹn và trẻ trung hẳn. Tôi cũng vui
+        lây. Vợ tôi chuẩn bị đồ đạc cho vào cái sắc du lịch. Cha tôi không nghe,
+        ông bảo: "Cho vào ba lô". Cha tôi đi chào làng nước một lượt, ra cả
+        ngoài mộ mẹ tôi, lại bảo anh Thanh bắn ba phát súng lên trời. Buổi tối
+        cha tôi gọi ông Cơ đến cho hai nghìn, bảo khắc một cái bia dá gửi về
+        Thanh Hóa đánh dấu mộ vợ. Cha tôi lại gọi cô Lài dến bảo: "Cháu lấy
+        chồng đi". Cô Lài òa khóc: "Cháu xấu xí lắm, chẳng ai lấy. Lại cả tin
+        nữa". Cha tôi nghẹn ngào: “Con ơi, con không hiểu rằng cả tin chính là
+        sức mạnh để sống hả con?" Tôi cũng không ngờ những điều như thế lại là
+        diềm báo chuyến này cha tôi ra đi không về. Trước khi lên xe, cha tôi
+        lấy trong ba lô ra quyển vở học sinh. Ông đưa cho tôi. Ông bảo: "Trong
+        này cha có ghi chép ít điều, con đọc thử xem". Cái Mi, cái Vi chào ông.
+        Cái Mi hỏi: "ông đi ra trận hả ông?" Cha tôi bảo: "ừ”. Cái Vi hỏi:
+      </p>
+      <p>
+        “Đường ra trận mùa này đẹp lắm có phải không ông?" Cha tôi chửi: "Mẹ
+        mày! Láo!”
+      </p>
+      <p>XIII</p>
+      <p>
+        Cha tôi đi được vài ngày thì ở nhà xảy ra chuyện cười nôn ruột. Số là
+        ông Cơ cùng với ông Bổng vớt bùn dưới ao (vợ tôi trả ông Bổng hai trăm
+        đồng một ngày công, cơm nuôi), bỗng thấy một cái đít chum nổi lên. Hai
+        ông hì hục đào, lại thấy một đít chum nữa, ông Bổng đoán chắc các cụ
+        ngày xưa chôn của. Hai ông báo với vợ tôi. Thủy đến xem, cũng lội xuống
+        đào. Rồi cả cô Lài, cả cái Mi, cái Vi. Cả nhà bê bết bùn đất. Vợ tôi bắt
+        phải ngăn ao, lại đi thuê máy bơm Côle về tát nước. Không khí thật
+        nghiêm trang. Ông Bổng thích lắm: "Công tao thấy trước, cứ phải chia cho
+        tao rnột chum". Hì hục một ngày đào được hai cái chum sứt trong chẳng có
+        gì. Ông Bổng bảo: " Chắc còn nữa". Lại đào. Được thêm một cái chum nữa,
+        cũng vỡ. Cả nhà mệt lả, bụng đói cồn cào. Vợ tôi sai mua bánh mì về ăn
+        lấy sức đào tiếp. Đào gần chục mét thì vớ được cái lọ sành. Cả nhà mừng
+        rỡ, ai cũng đoán vàng. Mở ra trong thấy toàn một chuỗi "Bảo Đại thông
+        báo" bằng đồng đã han rỉ cả. Lại thấy một cái mề đay mủn nát. Ông Bổng
+        bảo: "Thôi chết, tao nhớ ra rồi.”
+      </p>
+      <p>
+        Ngày xưa tạo với trùm Nhân ăn trộm ở nhà Hàn Tín, bị đuổi, trùm Nhân vứt
+        cái lọ này xuống ao". Cả nhà được một mẻ cười nôn ruột. Trùm Nhân là tên
+        ăn trộm khét tiếng ở vùng ngoại ô. Hàn Tín trước kia là lính thuộc địa
+        cho Tây, tham gia phong trào "Rồng Nam phun bạc, đánh đuổi Đức tặc". Cả
+        hai đã chết mục xác từ thuở nảo thuở nào. Ông Bổng bảo: "Không sao, bây
+        giờ cả làng này chết tao cũng đủ tiền đi đò nhét vào miệng họ”. Sáng hôm
+        sau, ngủ dậy thì tôi nghe thấy có tiếng gọi cổng. Tôi ra thấy Khổng đứng
+        ngoài. Tôi nghĩ: “Mẹ khỉ, cái thằng đểu này là điềm gở nhất của số phận
+        mình”. Khổng bảo: "Anh Thuần ơi, anh có điện. Ông cụ mất rồi!"
+      </p>
+      <p>XIV</p>
+      <p>
+        Điện của ông Chưởng: "Thiếu tướng Nguyễn Thuấn, hy sinh khi làm nhiệm vụ
+        hồi... giờ... ngày mai táng tại nghĩa trang liệt sĩ hồi... giờ... ngày"
+        Tôi lặng người. Vợ tôi xếp đặt mọi việc rất nhanh. Tôi ra thuê xe, về
+        nhà đã thấy gọn đâu vào đấy Vợ tôi bảo: "Khóa cửa nhà trên. Ông Cơ ở
+        lại". Xe đi Cao Bằng theo đường số Một. Đến nơi thì lễ an táng cha tôi
+        cử hành đã được hai tiếng đồng hồ. Ông Chưởng bảo: “Chúng tôi có lỗi đối
+        với gia đình". Tôi bảo: “Không phải thế. Đời người có mệnh". Ông Chưởng
+        bảo: "Cha anh là người đáng trọng". Tôi hỏi: "Theo nghi lễ quân đội hả
+        chú". Ông Chưởng bảo: “Cụ ra trận địa, đòi lên chốt". Tôi bảo: " Cháu
+        hiểu rồi, chú đừng kể nữa". Tôi khóc, chưa bao giờ tôi khóc như thế. Bây
+        giờ tôi mới hiểu khóc như cha chết là khóc thế nào. Hình như đấy là cái
+        khóc lớn nhất đời một con người.
+      </p>
+      <p>
+        Mộ của cha tôi đặt trong nghĩa trang liệt sĩ. Vợ tôi mang theo máy ảnh
+        bảo chụp mấy kiểu. Hôm sau tôi xin về luôn, ông Chưởng giữ lại nhưng tôi
+        không nghe. Đường về vợ tôi bảo xe đi chậm. Ông Bổng lần đầu mới được đi
+        xa, thích lắm. Ông bảo: “Nước mình thật đẹp như tranh. Bây giờ tôi mới
+        hiểu vì sao phải yêu đất nước. Chứ ở quê ta, dù ngay Hà Nội có văn minh
+        thật, tôi chẳng thấy yêu gì cả". Vợ tôi bảo: "Tại chú quen đấy. ở nơi
+        khác cũng thế, họ lại thấy yêu Hà Nội". Ông Bổng bảo: “Thế là nơi này
+        yêu nơi kia, người này yêu người kia. Tất cả đều đất nước mình, nhân dân
+        mình cả. Vậy thì đất nước muôn năm, nhân dân muôn năm. Hoan hô đèn cù! "
+      </p>
+      <p>XV</p>
+      <p>
+        Có lẽ câu chuyện của tôi kết thúc ở đây. Sau đó nếp sống của gia đình
+        tôi trở lại như là trước ngày cha tôi nghỉ hưu. Vợ tôi tiếp tục công
+        việc bình thường. Tôi đã hoàn thành công trình nghiên cứu điện phân. Ông
+        Cơ trở nên ít nói, một phần vì bệnh cô Lài nặng hơn. Lúc rỗi, tôi giở
+        đọc những điều cha tôi ghi chép. Tôi hiểu cha tôi hơn. Trên đây là những
+        sự việc lộn xộn của hơn một năm cha tôi nghỉ hưu mà tôi chép lại. Tôi
+        coi đấy như nén hương thắp nhớ người. Nếu có ai đã có lòng để mắt đọc
+        điều tôi viết, xin lượng thứ cho tôi.
+      </p>
+      <p>Tôi xin cảm tạ.</p>
+    </div>
+
+    <div class="essay" id="essay">
+      <p>
+        Khi đọc “Tướng về hưu” của Nguyễn Huy Thiệp, ta nhận thấy giọng văn gai
+        góc khi miêu tả thế giới con người không khác gì thế giới vật mấy. Các
+        nhân vật trong truyện đều là những con người cô đơn, mang mặc cảm ấy như
+        một bản án từ khi sinh ra. Mối quan hệ gia đình và xã hội tưởng chừng
+        bền chặt nhưng thực chất lại mong manh, dễ đứt.
+      </p>
+      <p>
+        Tướng Thuẫn là hình ảnh một người anh hùng trở về từ chiến trận, mang
+        theo gánh nặng truyền thống và lịch sử. Ông không thể hòa nhập với cuộc
+        sống mới, luôn cảm thấy "lạc loài" giữa thực tại. Dù được ngưỡng vọng
+        trong cộng đồng, ông vẫn chịu sự cô đơn sâu sắc – bi kịch của một thế hệ
+        gắn liền với quá khứ và không tìm được chỗ đứng trong hiện tại.
+      </p>
+      <p>
+        Hiện tại trong truyện là một xã hội mất phương hướng, thiếu lý tưởng,
+        nơi con người không thể nương tựa vào tương lai mà cũng không thể quay
+        về quá khứ. Các nhân vật trở nên lạc lõng với xã hội và chính mình, bộc
+        lộ qua những đoạn đối thoại rời rạc, vô nghĩa. Sự giao tiếp không còn là
+        cầu nối, mà chỉ là những chuỗi âm thanh lộn xộn, không ai hiểu ai.
+      </p>
+      <p>
+        Con người trong truyện không bị lý tưởng hóa. Họ vừa thiện vừa ác, vừa
+        cao cả vừa tầm thường, vừa là thủ phạm vừa là nạn nhân. Tướng Thuẫn –
+        người anh hùng được ngưỡng vọng – lại bất lực trước cuộc sống xô bồ, hỗn
+        loạn. Bi kịch của ông chính là bi kịch của một xã hội tôn thờ quá khứ
+        nhưng không thể dung hòa với hiện tại.
+      </p>
+      <p>
+        Ông còn khai thác sự phức tạp trong nội tâm con người. Ông không phân
+        định rạch ròi thiện – ác mà nhìn nhận bản chất hỗn độn của thế giới. Con
+        người luôn mang trong mình mâu thuẫn, vừa đấu tranh với bóng tối, vừa
+        không trùng khít với chính bản thân. Tác phẩm của ông khẳng định rằng
+        con người là một thực thể đang sinh thành, luôn chứa đựng những điều bất
+        ngờ, không bao giờ hoàn tất.
+      </p>
+      <p>
+        Nguyễn Huy Thiệp đã thành công trong việc khắc họa con người, mở ra
+        nhiều chiều kích nội tâm phong phú. Với cái nhìn thẳng thắn và không né
+        tránh sự thật, ông trả văn học về đúng bản chất của nó: một dòng sông
+        vừa trong veo tinh khiết vừa lẫn rác rưởi. Tác phẩm “Tướng về hưu” không
+        chỉ là một câu chuyện, mà còn là lời mời đối thoại, để mỗi chúng ta tự
+        chiêm nghiệm về giá trị cuộc sống.
+      </p>
+    </div>
+
+    <div class="return" id="return">
+      <a href="./index.html" class="back-link">Trở lại</a>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tâm hồn mẹ</title>
+    <style>
+      /* Cấu hình cơ bản cho trang */
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #ffebcc; /* Màu nền cam nhạt */
+        margin: 0;
+        padding: 0;
+        color: #333; /* Màu chữ tối cho dễ đọc */
+      }
+      a {
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+        margin-top: 10px;
+        display: inline-block;
+      }
+      .head {
+        display: flex;
+        align-items: center;
+        padding: 5px 20px;
+        background-color: #ff7f50;
+        width: fit-content;
+        margin: 10px;
+        border-radius: 15px;
+      }
+
+      .head img {
+        width: 40px;
+        margin-right: 10px;
+      }
+
+      .head a {
+        font-size: 15px;
+        color: white;
+        margin: 0;
+      }
+
+      .avatar {
+        display: flex;
+        align-items: flex-start;
+        margin: 20px;
+      }
+
+      .avatar-img {
+        width: 10%;
+        max-width: 300px;
+        border-radius: 10px;
+        border: 5px solid #ff6347;
+        margin-right: 20px;
+      }
+
+      .avatar h2 {
+        margin-top: 0;
+      }
+
+      .avatar p {
+        background-color: #fff;
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        font-size: 16px;
+        line-height: 1.6;
+        margin: 10px 0;
+      }
+
+      .paragraph,
+      .essay {
+        width: 55%;
+        margin: 40px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .paragraph p,
+      .essay p {
+        font-size: 16px;
+        line-height: 1.6;
+        margin-bottom: 20px;
+      }
+
+      /* Định dạng cho nút chuyển đổi */
+      #toggleButton {
+        text-decoration: none;
+        color: #ff6347;
+        font-weight: bold;
+        padding: 10px 20px;
+        display: inline-block;
+        margin: 20px;
+        background-color: #fff;
+        border-radius: 5px;
+        border: 1px solid #ff6347;
+        cursor: pointer;
+      }
+
+      #toggleButton:hover {
+        background-color: #ff6347;
+        color: white;
+      }
+
+      .return a {
+        text-decoration: none;
+        color: #ff6347;
+        font-weight: bold;
+        padding: 10px 20px;
+        display: inline-block;
+        margin: 20px;
+        background-color: #fff;
+        border-radius: 5px;
+        border: 1px solid #ff6347;
+      }
+
+      a:hover {
+        background-color: #ff6347;
+        color: white;
+      }
+
+      /* Đảm bảo cho trang di động */
+      @media (max-width: 768px) {
+        .avatar {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .avatar-img {
+          width: 60%;
+          margin-top: 10px;
+        }
+
+        .paragraph,
+        .essay {
+          width: 90%;
+        }
+      }
+    </style>
+    <script>
+      window.onload = function () {
+        // Ẩn phần essay khi trang tải
+        document.getElementById("essay").style.display = "none";
+      };
+
+      function toggleContent() {
+        const paragraph = document.getElementById("paragraph");
+        const essay = document.getElementById("essay");
+        const button = document.getElementById("toggleButton");
+        const avatarImage = document.getElementById("avatarImg");
+        const avatarName = document.getElementById("name");
+        const avatarIntro = document.getElementById("intro");
+        const avatarTitle = document.getElementById("title");
+
+        if (paragraph.style.display === "none") {
+          paragraph.style.display = "block";
+          essay.style.display = "none";
+          button.innerText = "Đọc bài cảm nhận";
+          avatarImage.src = "./tamhonme.webp"; // ảnh của tác phẩm
+          avatarIntro.innerHTML =
+            "<i>&#34;Một tác phẩm mang đến cho người đọc những cảm xúc sâu lắng và suy tư về tình mẫu tử thiêng liêng.&#34;</i>";
+          avatarName.innerText = "Tác giả: Nguyễn Huy Thiệp";
+          avatarTitle.innerText = "Tâm hồn mẹ";
+        } else {
+          paragraph.style.display = "none";
+          essay.style.display = "block";
+          button.innerText = "Đọc tác phẩm";
+          avatarImage.src = "./thanh.jpg"; // ảnh của bài cảm nhận
+          avatarIntro.innerHTML =
+            "<i>&#34;Tôi là Doraemon nhưng tôi không thích ăn bánh rán.&#34;</i>";
+          avatarName.innerText = "Tác giả: Vũ Tiến Thành";
+          avatarTitle.innerText = "Cảm nhận về tác phẩm 'Tâm hồn mẹ'";
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div class="head" id="head">
+      <img src="logo.png" alt="Logo" />
+      <a href="index.html">Nhóm MATH</a>
+    </div>
+
+    <div class="avatar" id="avatar">
+      <img
+        src="./tamhonme.webp"
+        alt="Tâm hồn mẹ"
+        class="avatar-img"
+        id="avatarImg"
+      />
+      <div>
+        <h2 class="title" id="title">Tâm hồn mẹ</h2>
+        <p class="intro" id="intro">
+          <i
+            >"Một tác phẩm mang đến cho người đọc những cảm xúc sâu lắng và suy
+            tư về tình mẫu tử thiêng liêng."</i
+          >
+        </p>
+        <p class="name" id="name">Tác giả: Nguyễn Huy Thiệp</p>
+      </div>
+    </div>
+
+    <!-- Nút chuyển đổi nội dung -->
+    <button id="toggleButton" onclick="toggleContent()">
+      Đọc bài cảm nhận
+    </button>
+
+    <div class="paragraph" id="paragraph">
+      <p>
+        Khi Đăng hai tuổi mẹ nó chết đột ngột vì sốt xuất huyết. Vì thế, hình
+        ảnh của nó về một người mẹ rất mơ hồ. Nó ở với ông bà ngoại. Bố nó đã đi
+        lấy vợ khác, chỉ thỉnh thoảng mới đến thăm nó. Đăng hình dung mẹ theo
+        cách nghĩ riêng của nó. Nó hay xét nét sự quan tâm săn sóc của những
+        người xung quanh nó bằng cách đặt ra câu hỏi: nếu là mẹ sẽ thế nào?
+        Chẳng hạn, lúc tắm bà ngoại kỳ cọ kỹ quá, nó nghĩ ngay rằng nếu là mẹ
+        thì không làm thế. Mẹ chỉ gội đầu và kỳ cọ những chỗ chủ yếu, còn ở chỗ
+        khác thì mẹ để cho nó làm lấy ăn cơm cũng vậy, nếu là mẹ thì không làm
+        như ông ngoại. Ông ngoại không hiểu nó không thích lạp xường, đáng lẽ
+        đừng ép thì đằng này ông lại ép, nổi giận và cuối cùng ông chén luôn
+        miếng lạp xường. Nó không tiếc miếng lạp xường, nó chỉ tủi thân vì ông
+        không hiểu nó.
+      </p>
+      <p>
+        Bây giờ khi lên bảy, Đăng hiểu không ai có thể cư xử săn sóc cho nó như
+        là mẹ được. Thường mọi người làm quá yêu cầu hoặc cư xử với nó không
+        thật đến nơi đến chốn. Cả hai cách ấy đều buồn. Nó là đứa bé nhạy cảm,
+        nhạy cảm quá mức, điều ấy thật không tốt. Tuy thế, nó không biết khắc
+        phục thế nào.
+      </p>
+      <p>
+        Đến bảy tuổi, Đăng chỉ quanh quẩn trong nhà. Nó ở với toàn người lớn.
+        Người lớn không hiểu nó. Nó luôn cảm thấy tủi thân. Tóm lại là không thể
+        bằng mẹ. Mẹ thì khác, dĩ nhiên rồi. Mẹ là hình ảnh tuyệt diệu, nó không
+        hình dung là sẽ thế nào, nhưng rõ ràng nó cảm nhận được. Trong số bạn bè
+        ít ỏi của Đăng có Thu. Thu bảy tuổi, có bố mẹ, có cả em nữa. ở trong
+        hoàn cảnh như thế nên ý nghĩ và tình cảm của Thu khác nó.
+      </p>
+      <p>
+        Thu hồn nhiên và khá tự do. Nó có thể đi chơi mà chẳng cần phải định giờ
+        về. Nó khác Đăng. Đăng bị một loạt qui định kìm giữ. Ông bà ngoại Đăng
+        luôn luôn căng thẳng trong trách nhiệm với đứa cháu mình. Từ việc chơi
+        với Thu, điều này thật vô hại mà ông bà cũng đe nẹt, cấm đoán nó.
+      </p>
+
+      <p>
+        Thu có đôi tai hồng và đôi mắt đen nháy. Không hiểu sao Đăng rất thích
+        được ve vuốt đôi tai hồng ấy và nhìn sâu vào đôi mắt đen nháy ấy.
+      </p>
+
+      <p>- Mày nhìn như nuốt tao ấy. Mày tìm cái gì ở đấy?</p>
+
+      <p>
+        Đăng bối rối. Ừ, nếu là mẹ thì chắc cũng có đôi mắt như vậy. Không thể
+        khác được.
+      </p>
+
+      <p>
+        - Không, tao không tìm gì cả. - Nó đánh trống lảng. - Này, mày có hay
+        khóc không?
+      </p>
+
+      <p>
+        - Thỉnh thoảng. Phải có cái gì mới khóc chứ. Ai lại tự nhiên đi khóc bao
+        giờ?
+      </p>
+
+      <p>
+        - Thế mà thỉnh thoảng tao lại tự nhiên khóc đấy - Đăng nói. Nó cố ngẫm
+        nghĩ xem có lần nào nó tự nhiên khóc không?
+      </p>
+
+      <p>
+        - Đấy là hồn của mẹ mày. - Thu nghiêm trang nói. Nó đã nghe đến chuyện
+        người ta gọi hồn. - Hồn mẹ mày về bảo: "Này Đăng, con khóc đi, khóc đi
+        cho vơi nỗi buồn..."
+      </p>
+
+      <p>- Nỗi buồn là gì? - Đăng hỏi.</p>
+
+      <p>
+        - Không biết, nhưng nó cũng giống như đánh mất cái gì. Hôm qua tao đánh
+        mất cái cặp tóc, thế là tao buồn.
+      </p>
+
+      <p>
+        - Tao đánh mất thì tao không buồn. - Đăng kiên quyết. - Ông ngoại tao
+        bảo: "Ở đời người ta đánh mất nhiều thứ lắm. Người mất của cải, người
+        mất tâm hồn..."
+      </p>
+
+      <p>- Tâm hồn là gì?</p>
+
+      <p>- Nó ở đây này - Đăng chỉ vào bụng.</p>
+
+      <p>
+        - Trong bụng người ta toàn cứt. - Thu thở dài. - Mẹ tao bảo thế. Nếu thế
+        thì kinh quá nhỉ?
+      </p>
+
+      <p>
+        - Đấy là mẹ mày nói bậy bạ thế thôi. - Đăng an ủi. - Tâm hồn nó giống
+        như dây đàn ấy, ông ngoại tao bảo thế, khi có ngọn gió thổi đến thì nó
+        rung lên khe khẽ: a-a-a-a...
+      </p>
+
+      <p>
+        - Tâm hồn mà kêu a-a thì hay thật. - Thu cười như nắc nẻ. Nó nhắm tịt
+        mắt lại và nhại: a-a-a-a...
+      </p>
+
+      <p>
+        - Mày chẳng hiểu gì cả. - Đăng bực dọc. - Mày không có tâm hồn. Mày
+        giống mẹ mày ấy. Mẹ mày chỉ thích tiền thôi.
+      </p>
+
+      <p>
+        - Có thế thật. - Thu công nhận. - Có thể mẹ tao không có tâm hồn thật
+        đấy! Chẳng cần! Mà có tâm hồn làm gì. Khi gió thổi đến nó lại kêu a-a
+        thì kinh lắm. - Thu lại cười nắc nẻ.
+      </p>
+
+      <p>Đăng nhíu lông mày lại. Nó không thích Thu trêu nó. Nó bảo:</p>
+
+      <p>
+        - Mày cười như thế là đủ rồi đấy. Con gái hay cười là vô duyên lắm...
+      </p>
+
+      <p>- Vô duyên thì làm quái gì?</p>
+
+      <p>- Vô duyên thì ế chồng đấy.</p>
+
+      <p>
+        - Thằng quỷ ạ. Mày như cụ non ấy! - Thu phát cáu, từ trong tiềm thức mơ
+        hồ của nó, bản tính tự nhiên giục nó tìm cách trả thù bằng cách cố ý soi
+        mói độc ác.
+      </p>
+
+      <p>- Mày là thằng mồ côi. Mày cay nghiệt lắm!</p>
+
+      <p>
+        Đăng sững lại, mặt nó tái đi. Thu chọc mũi kim vào nơi nó đau nhất. Nước
+        mắt nó trào ra, đôi môi run rẩy, tái dại. Thần sắc của nó biến đổi khiến
+        Thu hoảng sợ.
+      </p>
+
+      <p>
+        - Này này, tao đùa đấy... Hơi tí đã khóc. Thôi, thôi, nếu như mày muốn
+        thì tao sẽ có tâm hồn. - Thu bối rối, nó bắt đầu phịa ra câu chuyện
+        tưởng tượng để dỗ bạn. - Đúng thế đấy, tối qua tao nghe thấy ở đâu đây
+        vang lên âm thanh rất khẽ: u-u-u-u. Tao không hiểu tiếng gì... Tựa tựa
+        như gió thổi ngoài đầu hồi... Có thể đấy là tiếng tâm hồn của tao chăng?
+      </p>
+
+      <p>...</p>
+    </div>
+
+    <div class="essay" id="essay">
+      <p>
+        Vào những năm 80-90 của thế kỷ 20, văn học Việt Nam đang chuyển mình
+        mạnh mẽ, khi đất nước trải qua những thay đổi lớn về mặt chính trị, xã
+        hội và kinh tế. Nguyễn Huy Thiệp, một trong những cây bút nổi bật trong
+        giai đoạn này, nổi bật với phong cách viết hiện thực sắc bén và khắc họa
+        những vấn đề phức tạp của con người và xã hội. Các tác phẩm của ông
+        thường không tránh né những khía cạnh tối tăm, những mâu thuẫn trong tâm
+        lý và hành động của con người, đặc biệt trong bối cảnh xã hội đang trong
+        quá trình thay đổi.
+      </p>
+      <p>
+        <b>"Tâm hồn mẹ"</b> được viết trong thời kỳ này, phản ánh những cảm xúc,
+        suy nghĩ sâu sắc về gia đình, tình mẫu tử, và các mối quan hệ trong xã
+        hội. Tác phẩm không chỉ phê phán những vấn đề đạo đức, mà còn khơi gợi
+        những câu hỏi về sự hy sinh, lòng vị tha và những khát vọng không thể
+        đáp ứng của con người.
+      </p>
+      <p>Em xin trích một đoạn nhỏ sau đây:</p>
+      <br />
+      <i>
+        <p>
+          "Bây giờ khi lên bảy, Đăng hiểu không ai có thể cư xử săn sóc cho nó
+          như là mẹ được. Thường mọi người làm quá yêu cầu hoặc cư xử với nó
+          không thật đến nơi đến chốn. Cả hai cách ấy đều buồn. Nó là đứa bé
+          nhạy cảm, nhạy cảm quá mức, điều ấy thật không tốt. Tuy thế, nó không
+          biết khắc phục thế nào.
+        </p>
+
+        <p>
+          Đến bảy tuổi, Đăng chỉ quanh quẩn trong nhà. Nó ở với toàn người lớn.
+          Người lớn không hiểu nó. Nó luôn cảm thấy tủi thân. Tóm lại là không
+          thể bằng mẹ. Mẹ thì khác, dĩ nhiên rồi. Mẹ là hình ảnh tuyệt diệu, nó
+          không hình dung là sẽ thế nào, nhưng rõ ràng nó cảm nhận được. Trong
+          số bạn bè ít ỏi của Đăng có Thu. Thu bảy tuổi, có bố mẹ, có cả em nữa.
+          ở trong hoàn cảnh như thế nên ý nghĩ và tình cảm của Thu khác nó.
+        </p>
+
+        <p>
+          Thu hồn nhiên và khá tự do. Nó có thể đi chơi mà chẳng cần phải định
+          giờ về. Nó khác Đăng. Đăng bị một loạt qui định kìm giữ. Ông bà ngoại
+          Đăng luôn luôn căng thẳng trong trách nhiệm với đứa cháu mình. Từ việc
+          chơi với Thu, điều này thật vô hại mà ông bà cũng đe nẹt, cấm đoán nó.
+          Thu có đôi tai hồng và đôi mắt đen nháy. Không hiểu sao Đăng rất thích
+          được ve vuốt đôi tai hồng ấy và nhìn sâu vào đôi mắt đen nháy ấy. Mày
+          nhìn như nuốt tao ấy. Mày tìm cái gì ở đấy.
+        </p>
+
+        <p>
+          Đăng bối rối.
+          <i
+            >Ừ, nếu là mẹ thì chắc cũng có đôi mắt như vậy. Không thể khác
+            được.</i
+          >
+        </p>
+
+        <p>
+          - Không, tao không tìm gì cả. - Nó đánh trống lảng. - Này, mày có hay
+          khóc không?
+        </p>
+
+        <p>
+          - Thỉnh thoảng. Phải có cái gì mới khóc chứ. Ai lại tự nhiên đi khóc
+          bao giờ?
+        </p>
+
+        <p>
+          Thế mà thỉnh thoảng tao lại tự nhiên khóc đấy - Đăng nói. Nó cố ngẫm
+          nghĩ xem có lần nào nó tự nhiên khóc không?
+        </p>
+
+        <p>
+          - Đấy là hồn của mẹ mày. - Thu nghiêm trang nói. Nó đã nghe đến chuyện
+          người ta gọi hồn. - Hồn mẹ mày về bảo: "Này Đăng, con khóc đi, khóc đi
+          cho vơi nỗi buồn... "
+        </p>
+
+        <p>- Nỗi buồn là gì? - Đăng hỏi.</p>
+
+        <p>
+          - Không biết, nhưng nó cũng giống như đánh mất cái gì. Hôm qua tao
+          đánh mất cái cặp tóc, thế là tao buồn.
+        </p>
+
+        <p>
+          Tao đánh mất thì tao không buồn. - Đăng kiên quyết. - ông ngoại tao
+          bảo: "ở đời người ta đánh mất nhiều thứ lắm. Người mất của cải, người
+          mất tâm hồn... "
+        </p>
+
+        <p>- Tâm hồn là gì?</p>
+
+        <p>- Nó ở đây này - Đăng chỉ vào bụng.</p>
+
+        <p>
+          - Trong bụng người ta toàn cứt. - Thu thở dài. - Mẹ tao bảo thế. Nếu
+          thế thì kinh quá nhỉ?
+        </p>
+
+        <p>
+          - Đấy là mẹ mày nói bậy nói bạ thế thôi. - Đăng an ủi. - Tâm hồn nó
+          giống như dây đàn ấy, ông ngoại tao bảo thế, khi có ngọn gió thổi đến
+          thì nó rung lên khe khẽ: a-a-a-a...
+        </p>
+
+        <p>
+          Tâm hồn mà kê u a-a thì hay thật. - Thu cười như nắc nẻ. Nó nhắm tịt
+          mắt lại và nhại: a-a-a-a...
+        </p>
+
+        <p>
+          - Mày chắng hiểu gì cả. - Đăng bực dọc. - Mày không có tâm hồn. Mày
+          giống mẹ mày ấy. Mẹ mày chỉ thích tiền thôi.
+        </p>
+
+        <p>
+          - Có thế thật. - Thu công nhận. - Có thể mẹ tao không có tâm hồn thật
+          đấy! Chẳng cần! Mà có tâm hồn làm gì. Khi gió thổi đến nó lại kêu a-a
+          thì kinh lắm. - Thu lại cười nắc nẻ. Đăng nhíu lông mày lại. Nó không
+          thích Thu trêu nó. Nó bảo:
+        </p>
+
+        <p>
+          - Mày cười như thế là đủ rồi đấy. Con gái hay cười là vô duyên lắm...
+        </p>
+
+        <p>- Vô duyên thì làm quái gì?</p>
+
+        <p>- Vô duyên thì ế chồng đấy.</p>
+
+        <p>
+          - Thằng quỷ ạ. Mày như cụ non ấy! - Thu phát cáu, từ trong tiềm thức
+          mơ hồ của nó, bản tính tự nhiên giục nó tìm cách trả thù bằng cách cố
+          ý soi mói độc ác.
+        </p>
+
+        <p>- Mày là thằng mồ côi. Mày cay nghiệt lắm!</p>
+
+        <p>
+          Đăng sững lại, mặt nó tái đi. Thu chọc mũi kim vào nơi nó đau nhất.
+          Nước mắt nó trào ra, đôi môi run rẩy, tái dại. Thần sắc của nó biến
+          đổi khiến Thu hoảng sợ.
+        </p>
+
+        <p>
+          - Này này, tao đùa đấy... Hơi tí đã khóc. Thôi, thôi, nếu như mày muốn
+          thì tao sẽ có tâm hồn. - Thu bối rối, nó bắt đầu phịa ra câu chuyện
+          tưởng tượng để dỗ' bạn. - Đúng thế đấy, tối qua tao nghe thấy ở đâu
+          đây vang lên âm thanh rất khẽ: u-u-u- u. Tao không hiểu tiếng gì...
+          Tựa tựa như gió thổi ngoài đầu hồi... Có thể đấy là tiếng tâm hồn của
+          tao chăng?"
+        </p>
+      </i>
+      <br />
+
+      <p>
+        Đoạn trích mô tả một tình yêu của người mẹ vô cùng đặc biệt. Nguyễn Huy
+        Thiệp đã khéo léo so sánh tình yêu của mẹ đối với con không chỉ là tình
+        cảm của một người mẹ, mà còn là tình yêu của một người tình. Đây là một
+        sự kết hợp đầy mâu thuẫn nhưng cũng rất thật. Tình yêu của mẹ là một sự
+        hy sinh thầm lặng, không mong đợi, không yêu cầu đáp lại, nhưng lại đầy
+        ắp sự xót xa và cảm động. Cảm giác này của mẹ không thể nào diễn đạt
+        thành lời, chỉ có thể âm thầm trong suốt cuộc đời.
+      </p>
+
+      <p>
+        Nguyễn Huy Thiệp sử dụng hình ảnh "cái đau không thể nói ra thành lời"
+        để nhấn mạnh rằng, nỗi đau của mẹ không phải là sự đau đớn thể xác mà là
+        những đau đớn tinh thần, những mất mát không thể nào chia sẻ hay xoa
+        dịu. Tình yêu ấy, dù bao la, nhưng luôn đi kèm với sự hy sinh và chịu
+        đựng, khiến cho người mẹ phải âm thầm đau khổ mà không có ai sẻ chia.
+        Nỗi đau này đốt cháy tim gan, nhưng lại không có cách nào làm vơi đi,
+        giống như sự im lặng tuyệt đối của mẹ trong mọi tình huống.
+      </p>
+
+      <p>
+        Người mẹ trong "Tấm Lòng Mẹ" là hình ảnh của sự cam chịu vô bờ bến. Bà
+        chịu đựng tất cả mà không hề than vãn. Cái đau của mẹ không phải là sự
+        mất mát hay thất vọng về bản thân mà là sự thất vọng khi không thể bảo
+        vệ, chăm sóc con cái một cách trọn vẹn. Chịu đựng trong im lặng, mẹ vẫn
+        luôn dành trọn tình yêu thương và hy vọng vào đứa con.
+      </p>
+
+      <p>
+        Tình yêu của mẹ trong đoạn trích này thể hiện một sự mâu thuẫn nội tâm
+        sâu sắc. Yêu thương, xót xa, cảm động và cả mộng mơ - tất cả những cảm
+        xúc này đều đan xen trong tâm trí người mẹ. Điều này cho thấy sự tinh tế
+        trong cách Nguyễn Huy Thiệp khắc họa nhân vật người mẹ, với một tình yêu
+        sâu sắc và phức tạp.
+      </p>
+
+      <p>
+        Đoạn trích từ "Tấm Lòng Mẹ" cho thấy sự hy sinh vô bờ của người mẹ, một
+        tình yêu mang tính vô điều kiện, không đòi hỏi gì, nhưng lại vô cùng đau
+        đớn và đầy sự cam chịu. Nguyễn Huy Thiệp đã thành công trong việc khắc
+        họa hình ảnh người mẹ với tình cảm dạt dào nhưng đầy xót xa, không thể
+        nói ra thành lời, nhưng vẫn là điều thiêng liêng, trân trọng nhất trong
+        cuộc đời mỗi người.
+      </p>
+    </div>
+
+    <div class="return" id="return">
+      <a href="./index.html" class="back-link">Trở lại</a>
+    </div>
+  </body>
+</html>

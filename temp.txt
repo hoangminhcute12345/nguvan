@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tâm hồn mẹ</title>
+    <style>
+      /* Cấu hình cơ bản cho trang */
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #ffebcc; /* Màu nền cam nhạt */
+        margin: 0;
+        padding: 0;
+        color: #333; /* Màu chữ tối cho dễ đọc */
+      }
+      a {
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+        margin-top: 10px;
+        display: inline-block;
+      }
+      .head {
+        display: flex;
+        align-items: center;
+        padding: 5px 20px;
+        background-color: #ff7f50;
+        width: fit-content;
+        margin: 10px;
+        border-radius: 15px;
+      }
+
+      .head img {
+        width: 40px;
+        margin-right: 10px;
+      }
+
+      .head a {
+        font-size: 15px;
+        color: white;
+        margin: 0;
+      }
+
+      .avatar {
+        display: flex;
+        align-items: flex-start;
+        margin: 20px;
+      }
+
+      .avatar-img {
+        width: 10%;
+        max-width: 300px;
+        border-radius: 10px;
+        border: 5px solid #ff6347;
+        margin-right: 20px;
+      }
+
+      .avatar h2 {
+        margin-top: 0;
+      }
+
+      .avatar p {
+        background-color: #fff;
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        font-size: 16px;
+        line-height: 1.6;
+        margin: 10px 0;
+      }
+
+      .paragraph,
+      .essay {
+        width: 55%;
+        margin: 40px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .paragraph p,
+      .essay p {
+        font-size: 16px;
+        line-height: 1.6;
+        margin-bottom: 20px;
+      }
+
+      /* Định dạng cho nút chuyển đổi */
+      #toggleButton {
+        text-decoration: none;
+        color: #ff6347;
+        font-weight: bold;
+        padding: 10px 20px;
+        display: inline-block;
+        margin: 20px;
+        background-color: #fff;
+        border-radius: 5px;
+        border: 1px solid #ff6347;
+        cursor: pointer;
+      }
+
+      #toggleButton:hover {
+        background-color: #ff6347;
+        color: white;
+      }
+
+      .return a {
+        text-decoration: none;
+        color: #ff6347;
+        font-weight: bold;
+        padding: 10px 20px;
+        display: inline-block;
+        margin: 20px;
+        background-color: #fff;
+        border-radius: 5px;
+        border: 1px solid #ff6347;
+      }
+
+      a:hover {
+        background-color: #ff6347;
+        color: white;
+      }
+
+      /* Đảm bảo cho trang di động */
+      @media (max-width: 768px) {
+        .avatar {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .avatar-img {
+          width: 60%;
+          margin-top: 10px;
+        }
+
+        .paragraph,
+        .essay {
+          width: 90%;
+        }
+      }
+    </style>
+    <script>
+      window.onload = function () {
+        // Ẩn phần essay khi trang tải
+        document.getElementById("essay").style.display = "none";
+      };
+
+      function toggleContent() {
+        const paragraph = document.getElementById("paragraph");
+        const essay = document.getElementById("essay");
+        const button = document.getElementById("toggleButton");
+        const avatarImage = document.getElementById("avatarImg");
+        const avatarName = document.getElementById("name");
+        const avatarIntro = document.getElementById("intro");
+        const avatarTitle = document.getElementById("title");
+
+        if (paragraph.style.display === "none") {
+          paragraph.style.display = "block";
+          essay.style.display = "none";
+          button.innerText = "Đọc bài cảm nhận";
+          avatarImage.src = "./tamhonme.webp"; // ảnh của tác phẩm
+          avatarIntro.innerText =
+            "Một tác phẩm mang đến cho người đọc những cảm xúc sâu lắng và suy tư về tình mẫu tử thiêng liêng.";
+          avatarName.innerText = "Tác giả: Nguyễn Huy Thiệp";
+          avatarTitle.innerText = "Tâm hồn mẹ";
+        } else {
+          paragraph.style.display = "none";
+          essay.style.display = "block";
+          button.innerText = "Đọc tác phẩm";
+          avatarImage.src = "./thanh.jpg"; // ảnh của bài cảm nhận
+          avatarIntro.innerText =
+            "Tôi là Doraemon nhưng tôi không thích ăn bánh rán.";
+          avatarName.innerText = "Tác giả: Vũ Tiến Thành";
+          avatarTitle.innerText = "Cảm nhận về tác phẩm 'Tâm hồn mẹ'";
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div class="head" id="head">
+      <img src="logo.png" alt="Logo" />
+      <a href="index.html">Nhóm MATH</a>
+    </div>
+
+    <div class="avatar" id="avatar">
+      <img
+        src="./tamhonme.webp"
+        alt="Tâm hồn mẹ"
+        class="avatar-img"
+        id="avatarImg"
+      />
+      <div>
+        <h2 class="title" id="title">Tâm hồn mẹ</h2>
+        <p class="intro" id="intro">
+          "Một tác phẩm mang đến cho người đọc những cảm xúc sâu lắng và suy tư
+          về tình mẫu tử thiêng liêng."
+        </p>
+        <p class="name" id="name">Tác giả: Nguyễn Huy Thiệp</p>
+      </div>
+    </div>
+
+    <!-- Nút chuyển đổi nội dung -->
+    <button id="toggleButton" onclick="toggleContent()">
+      Đọc bài cảm nhận
+    </button>
+
+    <div class="paragraph" id="paragraph">
+      
+    </div>
+
+    <div class="essay" id="essay">
+      
+    </div>
+
+    <div class="return" id="return">
+      <a href="./index.html" class="back-link">Trở lại</a>
+    </div>
+  </body>
+</html>

@@ -15,9 +15,38 @@
 
       .container {
         display: flex;
-        justify-content: space-evenly; /* Cân bằng khoảng cách giữa các phần tử */
-        gap: 10px; /* Thêm khoảng cách giữa các phần tử */
-        padding: 20px;
+        flex-wrap: wrap; /* Cho phép các phần tử xuống hàng */
+        justify-content: space-evenly; /* Căn đều các phần tử trong hàng */
+        gap: 20px; /* Khoảng cách giữa các phần tử */
+      }
+
+      .nht,
+      .nmc,
+      .tamhonme_nht,
+      .tuongvehuu_nht,
+      .chotet_nmc,
+      .buctranh_nmc {
+        flex: 0 1 45%; /* Mỗi phần tử chiếm khoảng 45% chiều rộng */
+        max-width: 34%; /* Đảm bảo không vượt quá 45% chiều rộng */
+        box-sizing: border-box; /* Đảm bảo padding không ảnh hưởng đến kích thước */
+        padding: 10px; /* Giảm kích thước padding */
+        font-size: 14px; /* Giảm kích thước chữ */
+      }
+
+      .nht img {
+        width: 35%; /* Ảnh chiếm toàn bộ chiều rộng phần tử */
+        height: auto; /* Duy trì tỉ lệ ảnh */
+        border-radius: 8px;
+      }
+
+      .nmc img,
+      .tamhonme_nht img,
+      .tuongvehuu_nht img,
+      .chotet_nmc img,
+      .buctranh_nmc img {
+        width: 30%; /* Ảnh chiếm toàn bộ chiều rộng phần tử */
+        height: auto; /* Duy trì tỉ lệ ảnh */
+        border-radius: 8px;
       }
 
       .nht,
@@ -65,6 +94,52 @@
       .nmc {
         background-color: #ff9900; /* Màu cam cho phần tử nmc */
       }
+
+      .tamhonme_nht {
+        background-color: #ff6347; /* Màu nền giống với nht */
+        width: 25%;
+        color: white;
+        border-radius: 8px;
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .tamhonme_nht img {
+        border-radius: 8px;
+        margin-top: 10px;
+      }
+
+      /* Định dạng giống nhau cho các nhóm */
+      .tamhonme_nht,
+      .tuongvehuu_nht {
+        background-color: #ff6347; /* Màu đỏ giống với nht */
+        width: 25%;
+        color: white;
+        border-radius: 8px;
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .chotet_nmc,
+      .buctranh_nmc {
+        background-color: #ff9900; /* Màu cam giống với nmc */
+        width: 25%;
+        color: white;
+        border-radius: 8px;
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Định dạng hình ảnh đồng nhất */
+      .tamhonme_nht img,
+      .tuongvehuu_nht img,
+      .chotet_nmc img,
+      .buctranh_nmc img {
+        border-radius: 8px;
+        margin-top: 10px;
+        width: 30%; /* Đồng nhất kích thước ảnh */
+      }
+
       .head {
         display: flex;
         align-items: center; /* Canh giữa theo chiều dọc */
@@ -92,7 +167,6 @@
         padding: 20px;
         text-align: center; /* Canh giữa văn bản */
         margin-top: 50px; /* Khoảng cách với các phần trên */
-        border-radius: 15px;
       }
 
       .intro h2 {
@@ -124,7 +198,7 @@
         <img
           src="https://youth.agu.edu.vn/sites/default/files/Cau_Lac_Bo/CLB_Van_Tho/14/u10833_t1388804521_R5O9b.jpg"
           alt="Nguyễn Huy Thiệp"
-          width="80%"
+          width="50%"
         />
         <br />
         <a href="./nht.html">Đọc thêm</a>
@@ -139,10 +213,68 @@
         <img
           src="https://upload.wikimedia.org/wikipedia/vi/3/36/Nh%C3%A0_v%C4%83n_Nguy%E1%BB%85n_Minh_Ch%C3%A2u.jpg"
           alt="Nguyễn Minh Châu"
-          width="70%"
+          width="40%"
         />
         <br />
         <a href="./nmc.html">Đọc thêm</a>
+      </div>
+
+      <div class="tamhonme_nht" id="tamhonme_nht">
+        <h3>Cảm nghĩ của em về tác phẩm <i>"Tâm hồn mẹ"</i></h3>
+        <p>
+          <i
+            >"Một tác phẩm mang đến cho người đọc những cảm xúc sâu lắng và suy
+            tư về tình mẫu tử thiêng liêng."</i
+          >
+        </p>
+        <p>Tác giả: Vũ Tiến Thành</p>
+        <img src="./tamhonme.webp" alt="Tâm hồn mẹ" width="30%" />
+        <br />
+        <a href="./tamhonme.html">Đọc thêm</a>
+      </div>
+
+      <div class="chotet_nmc" id="chotet_nmc">
+        <h3>Cảm nghĩ của em về tác phẩm <i>"Chợ Tết"</i></h3>
+        <p>
+          <i
+            >"Cho dù thế nào đi chăng nữa, tết đối với mỗi người có lẽ vẫn là
+            một dịp vô cùng ý nghĩa để trở về với gia đình, quê hương, để tìm
+            kiếm những điều bình dị mà đong đầy hạnh phúc."</i
+          >
+        </p>
+        <p>Tác giả: Lê Hoàng Minh</p>
+        <img src="./chotet.png" alt="Chợ Tết" width="8%" />
+        <br />
+        <a href="./chotet.html">Đọc thêm</a>
+      </div>
+      <div class="tuongvehuu_nht" id="tuongvehuu_nht">
+        <h3>Cảm nghĩ của em về tác phẩm <i>"Tướng về hưu"</i></h3>
+        <p>
+          <i
+            >"Các nhân vật trong truyện đều là những con người cô đơn, mang mặc
+            cảm ấy như một bản án từ khi sinh ra. Mối quan hệ gia đình và xã hội
+            tưởng chừng bền chặt nhưng thực chất lại mong manh, dễ đứt."</i
+          >
+        </p>
+        <p>Tác giả: Hà Đăng Huy</p>
+        <img src="./tuongvehuu.jpg" alt="Tướng về hưu" width="8%" />
+        <br />
+        <a href="./tuongvehuu.html">Đọc thêm</a>
+      </div>
+      <div class="buctranh_nmc" id="buctranh_nmc">
+        <h3>Phân tích tác phẩm <i>"Bức tranh"</i></h3>
+        <p>
+          <i
+            >"Qua lời “tự thú” trong bức chân dung tự họa của một họa sĩ khi
+            nhìn nhận lại những lỗi lầm của bản thân mình, nhà văn đã gửi đến
+            chúng ta thông điệp về sự dũng cảm đối mặt, về vẻ đẹp của sự bao
+            dung, nhân hậu của con người."</i
+          >
+        </p>
+        <p>Tác giả: Phạm Quốc Anh</p>
+        <img src="./buctranh.jpg" alt="Tướng về hưu" width="8%" />
+        <br />
+        <a href="./buctranh.html">Đọc thêm</a>
       </div>
     </div>
     <!-- Phần giới thiệu -->

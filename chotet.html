@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chợ Tết</title>
+    <style>
+      /* Cấu hình cơ bản cho trang */
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #ffebcc; /* Màu nền cam nhạt */
+        margin: 0;
+        padding: 0;
+        color: #333; /* Màu chữ tối cho dễ đọc */
+      }
+      a {
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+        margin-top: 10px;
+        display: inline-block;
+      }
+      .head {
+        display: flex;
+        align-items: center;
+        padding: 5px 20px;
+        background-color: #ff7f50;
+        width: fit-content;
+        margin: 10px;
+        border-radius: 15px;
+      }
+
+      .head img {
+        width: 40px;
+        margin-right: 10px;
+      }
+
+      .head a {
+        font-size: 15px;
+        color: white;
+        margin: 0;
+      }
+
+      .avatar {
+        display: flex;
+        align-items: flex-start;
+        margin: 20px;
+      }
+
+      .avatar-img {
+        width: 10%;
+        max-width: 300px;
+        border-radius: 10px;
+        border: 5px solid #ff6347;
+        margin-right: 20px;
+      }
+
+      .avatar h2 {
+        margin-top: 0;
+      }
+
+      .avatar p {
+        background-color: #fff;
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        font-size: 16px;
+        line-height: 1.6;
+        margin: 10px 0;
+      }
+
+      .paragraph,
+      .essay {
+        width: 55%;
+        margin: 40px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .paragraph p,
+      .essay p {
+        font-size: 16px;
+        line-height: 1.6;
+        margin-bottom: 20px;
+      }
+
+      /* Định dạng cho nút chuyển đổi */
+      #toggleButton {
+        text-decoration: none;
+        color: #ff6347;
+        font-weight: bold;
+        padding: 10px 20px;
+        display: inline-block;
+        margin: 20px;
+        background-color: #fff;
+        border-radius: 5px;
+        border: 1px solid #ff6347;
+        cursor: pointer;
+      }
+
+      #toggleButton:hover {
+        background-color: #ff6347;
+        color: white;
+      }
+
+      .return a {
+        text-decoration: none;
+        color: #ff6347;
+        font-weight: bold;
+        padding: 10px 20px;
+        display: inline-block;
+        margin: 20px;
+        background-color: #fff;
+        border-radius: 5px;
+        border: 1px solid #ff6347;
+      }
+
+      a:hover {
+        background-color: #ff6347;
+        color: white;
+      }
+
+      /* Đảm bảo cho trang di động */
+      @media (max-width: 768px) {
+        .avatar {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .avatar-img {
+          width: 60%;
+          margin-top: 10px;
+        }
+
+        .paragraph,
+        .essay {
+          width: 90%;
+        }
+      }
+    </style>
+    <script>
+      window.onload = function () {
+        // Ẩn phần essay khi trang tải
+        document.getElementById("essay").style.display = "none";
+      };
+
+      function toggleContent() {
+        const paragraph = document.getElementById("paragraph");
+        const essay = document.getElementById("essay");
+        const button = document.getElementById("toggleButton");
+        const avatarImage = document.getElementById("avatarImg");
+        const avatarName = document.getElementById("name");
+        const avatarIntro = document.getElementById("intro");
+        const avatarTitle = document.getElementById("title");
+
+        if (paragraph.style.display === "none") {
+          paragraph.style.display = "block";
+          essay.style.display = "none";
+          button.innerText = "Đọc bài cảm nhận";
+          avatarImage.src = "./chotet.png"; // ảnh của tác phẩm
+          avatarIntro.innerHTML =
+            "<i>&#34;Cho dù thế nào đi chăng nữa, tết đối với mỗi người có lẽ vẫn là một dịp vô cùng ý nghĩa để trở về với gia đình, quê hương, để tìm kiếm những điều bình dị mà đong đầy hạnh phúc.&#34;</i>";
+          avatarName.innerText = "Tác giả: Nguyễn Minh Châu";
+          avatarTitle.innerText = "Chợ Tết";
+        } else {
+          paragraph.style.display = "none";
+          essay.style.display = "block";
+          button.innerText = "Đọc tác phẩm";
+          avatarImage.src = "./minh.jpg"; // ảnh của bài cảm nhận
+          avatarIntro.innerHTML =
+            "<i>&#34;Mình là Minh, Minh Béo => Beo Mính :3&#34;</i>";
+          avatarName.innerText = "Tác giả: Lê Hoàng Minh";
+          avatarTitle.innerText = "Phân tích tác phẩm 'Chợ Tết'";
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div class="head" id="head">
+      <img src="logo.png" alt="Logo" />
+      <a href="index.html">Nhóm MATH</a>
+    </div>
+
+    <div class="avatar" id="avatar">
+      <img src="./chotet.png" alt="Chợ Tết" class="avatar-img" id="avatarImg" />
+      <div>
+        <h2 class="title" id="title">Chợ Tết</h2>
+        <p class="intro" id="intro">
+          <i
+            >"Cho dù thế nào đi chăng nữa, tết đối với mỗi người có lẽ vẫn là
+            một dịp vô cùng ý nghĩa để trở về với gia đình, quê hương, để tìm
+            kiếm những điều bình dị mà đong đầy hạnh phúc."</i
+          >
+        </p>
+        <p class="name" id="name">Tác giả: Nguyễn Minh Châu</p>
+      </div>
+    </div>
+
+    <!-- Nút chuyển đổi nội dung -->
+    <button id="toggleButton" onclick="toggleContent()">
+      Đọc bài cảm nhận
+    </button>
+
+    <div class="paragraph" id="paragraph">
+      <p>
+        Ngưng đọng bế tắc trì trệ -- đó là cảm tưởng bao trùm tâm trí nhà văn
+        Nguyễn Minh Châu khi ông nghĩ về xã hội Việt Nam sau chiến tranh và điều
+        đó được khắc họa đậm nét qua thiên truyện viết từ 2- 1988 mà dưới đây là
+        văn bản tôi muốn các bạn cùng đọc lại.
+      </p>
+
+      <p>
+        Sau bài Tiếng kêu thảng thốt cuối cùng của Nguyễn Minh Châu, khi làm
+        công việc xoát sét lại bản đánh máy Chợ tết, tôi nhận ra tác phẩm có một
+        sức khái quát khá lớn.
+      </p>
+
+      <p>
+        Không chỉ cái hồn cốt bao trùm khung cảnh sự vật mà như từng nhân vật
+        trong truyện cũng quy tụ về chủ đề chính.
+      </p>
+
+      <p>
+        Hãy chú ý rằng hai lần tác giả chỉ ra sự lặp lại đến không ngờ giữa các
+        thế hệ. Ông lái đò nay làm người đi xa về tưởng là ông lái đò xưa còn
+        sống, hóa ra chỉ là con trai ông ta. Mà giữa cô bé bán báo và mụ Tề bán
+        cá, hai mẹ con tưởng là khác nhau bao nhiêu, hóa ra vẫn chung những nét
+        quen thuộc làm nên thân phận người phụ nữ trong một xã hội lạc hậu.
+      </p>
+
+      <p>
+        Khi bảo rằng thời gian chỉ để lại trên hình vóc bóng dáng con người
+        những dấu vết của tàn phá tức là trong tâm trí nhà văn đã ấp ủ một điều
+        không tiện nói ra: chiến tranh đã làm cái công việc nó vẫn từng làm ở
+        mọi nơi khác; trải qua chiến tranh, xã hội ta đang lê lết trong một tình
+        trạng trung cổ và không tìm đâu ra những yếu tố mới để tạo ra một sự
+        phát triển đích thực.
+      </p>
+
+      <p>
+        Một khía cạnh cũng khiến người đọc hôm nay có thể bất ngờ là cái phương
+        cách giải quyết tình hình mà -- dù không thích nhưng nhân vật Định vẫn
+        thấy không thể có cách nào khác, đấy là bạo lực. Bạo lực sẽ khiến cho sự
+        hỗn loạn tan nát này bị tạm thời đẩy lùi, dù sau đó lại chìm sâu vào trì
+        trệ chắc chắn hơn. Với việc nhắc lại mấy lần chi tiết ngọn roi đuôi cá
+        đuối của lão coi chợ, và cả cái triết lý cai quản chợ búa của lão nữa,
+        tác giả như đã thông qua cái chợ để nói lên tình hình chung của xã hội
+        hậu chiến.
+      </p>
+
+      <p>
+        Ngoài những tác phẩm viết trước 1975, Nguyễn Minh Châu còn có những tác
+        phẩm viết sau chiến tranh được dư luận mấy chục năm nay công nhận và coi
+        như một bước phát triển mới của ngòi bút.
+      </p>
+
+      <p>
+        Nhưng công nhận là một chuyện còn chỉ ra đâu là những thay đổi cốt tử ở
+        nhà văn, lại là một chuyện hoàn toàn khác.
+      </p>
+
+      <p>
+        Theo tôi, việc một thiên truyện như Chiếc thuyền ngoài xa được mang ra
+        giảng dạy ở trường phổ thông nên coi là chưa xác đáng với nghĩa nó chưa
+        nói được cái mới mẻ dứt khoát giống như một sự đảo ngược ở Nguyễn Minh
+        Châu sau chiến tranh.
+      </p>
+
+      <p>
+        Trước khi cho những ý nghĩ trong bài Hãy đọc lời ai điếu cho một giai
+        đoạn văn nghệ minh họa hiện hình trên mặt giấy ( báo Văn Nghệ
+        5/1201987), nhà văn đầy tâm huyết này đã nhủ thầm trông đầu óc mình
+        nhiều lần và cũng đã có những sáng tác để ghi nhận bước chuyển biến dứt
+        khoát trong tư tưởng của mình.
+      </p>
+
+      <p>
+        Nên có thể nói những tác phẩm đáng lưu ý của Nguyễn Minh Châu sau 1975
+        chính ra phải là Khách ở quê ra, Cỏ lau, và cũng nên kể cả Chợ Tết mà do
+        sự xuất hiện lẻ loi, lại chỉ có một số phận rất bạc bẽo.
+      </p>
+
+      <p>
+        Khoác ba lô đứng bên chiếc cầu gãy giữa làng mình, Định nhìn thấy một
+        ngọn roi bằng đuôi cá đuối quật vun vút vào không khí phía trên đầu đám
+        người đang họp chợ.
+      </p>
+
+      <p>
+        Cũng chẳng nhìn rõ mặt mũi một ai, chỉ thấy lố nhố một đám nón, rặt nón
+        mê xỉn một màu lúi húi cúi xuống những cái mẹt cá.
+      </p>
+
+      <p>
+        - Hai, bốn, sáu,... Quân tuyệt tự tuyệt nọc... tám, mười... -- đám đàn
+        bà kẻ biển cùng kẻ buôn chẳng kịp ngẩng lên, buông một tiếng rủa giữa
+        lúc mải miết đếm cá.
+      </p>
+
+      <p>
+        - Mày còn chửi cà. Mày là đứa nào? Ngọn roi quất xuống một nhát trên
+        chóp một cái nón mê đã bật vành. Lập tức một cái mặt đàn bà ngẩng lên,
+        một mớ váy, yếm cũ rách phấp phới bật vùng dậy giật phắt lấy thanh roi
+        trên tay lão già mặt đỏ gay mắt trắng dã.
+      </p>
+
+      <p>
+        Lão đàn ông kia đâm quàng bỏ chạy, miệng kêu: "Ả đuổi tui, nó lấy mất
+        hết cá cà!".
+      </p>
+
+      <p>
+        Bị mụ đàn bà rượt một vòng, nhưng khi chạy qua trước mặt Định, lão đàn
+        ông tự nhiên đứng sững lại.
+      </p>
+
+      <p>
+        - Chao ôi kìa bác Đất - Định la to - em tìm vào nhà thờ họ chẳng thấy
+        anh, phải ra đây. Mụ đàn bà rượt tới, mớ yếm áo tanh rềnh mùi cá tươi
+        cũng dừng lại, có vẻ nhận ra Định, vừa ngỡ ngàng mừng rỡ, vừa xấu hổ.
+      </p>
+
+      <p>
+        Định nhìn. Thoạt đầu chẳng nhớ ra ai. Trên mười năm nay Định mới đảo qua
+        làng vài lần, mà lần nào cũng vội vội vàng vàng y như cái lần cuối năm
+        này. Chỉ láng máng nhận thấy chắc xưa cũng là một người con gái có sắc ở
+        trong làng.
+      </p>
+
+      <p>
+        Mụ đàn bà mỗi lúc một xấu hổ. Mụ vứt chiếc roi xuống chân người đàn ông
+        rồi y như người đang đi trốn, cắm đầu chạy.
+      </p>
+
+      <p>Đến lúc bấy giờ Định mới sực nhớ.</p>
+
+      <p>
+        Trong bụng toan chạy theo nhưng lại sợ chỉ làm nguời đàn bà thêm xấu hổ.
+      </p>
+
+      <p>
+        Từ trong xa xôi, Định nhớ lại một ông chú họ rất hiền hay mặc chiếc áo
+        lụa mỡ gà thường ngồi sau một hàng ngăn kéo dán những tờ giấy đỏ viết
+        tên các vị thuốc bắc và tà áo dài trắng của Tề có rây vài vệt mực tím từ
+        trong dãy phố chợ đi ra giữa hai hàng cây chè tàu. Nhưng quả táo tàu cất
+        trong cặp sách Tề hay dúi cho Định. Chắc chắn giá không có họ với nhau
+        thì Định đã lấy Tề.
+      </p>
+
+      <p>
+        Lão Đất cười, há cái miệng đỏ hỏn như miệng trẻ con mới đẻ phả đầy hơi
+        rượu một hồi lâu sau mới thốt ra được mấy tiếng lắp bắp. "Con Tề. Con Tề
+        con nhà chú Lưu chả lẽ chú Định không nhớ?", rồi hỏi:
+      </p>
+
+      <p>- Anh em nhà chú ngoài ấy có nhận được cái giấy tôi đánh ra không?</p>
+
+      <p>
+        - Có, Định đáp, vì thế mà áp tết em cũng phải ghé về. Xem ở nhà cần công
+        việc gì.
+      </p>
+
+      <p>- Chú đã đảo qua lên chỗ thằng Khúng chưa?</p>
+
+      <p>- Chưa.</p>
+
+      <p>
+        - Ở nhà anh em vừa bàn kỳ này dựng lại cái nhà thờ họ, lại còn hai cái
+        mả của ông bà thân sinh chú, hồi này thằng Khúng nó ít về làng quá, tui
+        đã đắp nhiều bận nhưng trâu bò nó phá tợn lắm.
+      </p>
+
+      <p>
+        - Em ơn anh. Trưa nay em nhờ anh dẫn ra ngoài mộ... Nhà anh bây giờ ở
+        đâu?
+      </p>
+      <p>
+        Đây, đây. Thì tui đang dẫn chú về. Ở nhà tui chơi ra ngoài giêng tế tổ
+        rồi hẵng đi.
+      </p>
+      <p>
+        Ông anh họ cắp ngọn roi cá đuối vào bên nách, cánh tay bên kia quắp lấy
+        cánh tay Định lôi đi giữa hai hàng nón vẫn cúi gập xuống lúi húi trên
+        những mẹt, những thúng cá.
+      </p>
+      <p>
+        "Vào trong chợ. Vào trong chợ hết không thì chết!" Lão Đất giắt Định len
+        bàn chân vào được đến đâu lại tiếng quát thét đến đấy.
+      </p>
+      <p>Chẳng một ai thèm nhúc nhích.</p>
+      <p>
+        Mấy lần đã toan rút thanh roi ra nhưng chắc hắn ngại có Định bên cạnh
+        nên lão Đất chỉ khuỳnh khuỳnh cánh tay rộng hơn để thị oai, đi qua mẹt
+        cá nào lão lại lấy bàn chân đá nhẹ một cái, gọi tên từng người mà bảo:
+        "Vào trong chợ. Vào trong chợ mà họp không thì chết!"
+      </p>
+      <p>
+        Rồi bất ngờ lão quay hẳn người về sau, rút chiếc roi kẹp trong nách,
+        quắc mắt dứ dứ về phía chiếc cầu gỗ dài chưa đầy chục thước đứng cao
+        chênh vênh giữa trời đã bị tàu bay Mỹ cắt làm đôi, lão lại nhắc lại cái
+        câu ban nãy bằng giọng hăm doạ tợn tạo hơn.
+      </p>
+      <p>Dưới chân cầu toàn cọc sắt lừ đừ.</p>
+      <p>
+        Từ bên kia trôi sang một chiếc đò gỗ nêm đến chật ních người đi chợ bán
+        cá, hai bờ sông nhầy nhụa bùn nước mặn khoảng cách khéo lắm chỉ dài gấp
+        đôi thân con bò.
+      </p>
+      <p>
+        Dòng sông nước mặn như khúc lòng lợn lượn vòng vèo dưới chân cầu, trịnh
+        trọng chảy qua một cái bến lát đá Thanh trước cổng ngôi đền làng. Cái
+        "bến đền làng" nổi tiếng ấy chắc Tề còn nhớ, Định thầm tự hỏi, hai đứa
+        có lần rủ nhau tụt xuống ngồi tận hàng bậc đá cuối cùng, vừa ăn những
+        quả táo tàu, vừa nhìn ra những chiếc thuyền chở vôi, chở nước mắm đều
+        gác mái chèo, chỉ chống sào để khỏi làm kinh động ngôi đền - bây giờ
+        những hàng ván bia gỗ dựng xen với hàng rào nứa chạy dài ôm bọc suốt cả
+        bốn mặt ngôi đền linh thiêng như những dãy hàng rào chống thú.
+      </p>
+      <p>
+        Định ngơ ngác. Những luỹ cây um tùm đầy huyền bí không còn. Ngôi đền
+        làng không còn. "Công ty ngoại thương hải sản" chỉ còn mấy chữ treo trên
+        ba lối của của ngôi cổng đền sụp đổ. Định ngơ ngẩn dừng chân cố tìm hai
+        bức hình đắp nổi "ông Thiện" và "ông Ác" đứng dựa lưng vào bức tường
+        cổng đền làng nhìn ra khúc sông, trong khi đọc hàng chữ kẻ nguệch ngoạc
+        trên một tấm gỗ mộc.
+      </p>
+      <p>Lão Đất đưa Định về đến nhà.</p>
+      <p>
+        Lão chống thanh roi đứng giữa nhà kiêu hãnh nhìn theo Định đang ngắm
+        ngôi nhà của mình. Một cái nhà hầm nửa nổi nửa chìm. Nửa nhà ghép bằng
+        những tấm ván tháo rời từ các hòm chứa đạn pháo cao xạ, một nửa nhà ghép
+        bằng gỗ ván thuyền bị tàu bay Mỹ bắn cháy dọc các bờ bãi.
+      </p>
+      <p>
+        Ở ngoài Hà Nội, từ nhiều năm Định đã biết cái nhà thờ họ thuộc chi thứ
+        của mình bị trúng bom.
+      </p>
+      <p>Lão đất đã cất công khuân về bảo quản ở đây.</p>
+      <p>
+        Một đống gỗ, toàn gỗ lim, cái kèo, cái cột, cái trạm trổ, cái chỉ bào
+        xoi chất một đống áp trước cửa.
+      </p>
+      <p>
+        Định nhìn thấy giữa đống gỗ một hai bức ván chạm long, quy hai lớp, và
+        một cây cột to lại dài như cột đền. Chắc là lão Đất đã lấy của đền cho
+        cái nhà thờ họ sắp dựng lại.
+      </p>
+      <p>
+        Bên trong nhà bày biện y như một viện bảo tàng chiến tranh. Vì đây
+        nguyên là ngôi nhà sở chỉ huy của một đại đội pháo cao xạ 57 bảo vệ vùng
+        biển. Trên bức vách gỗ hòm đạn còn lưu lại một hàng tờ giấy to vẽ đường
+        bay của địch từ ngoài biển lao vào, từ trong Cầu Bùng ra, từ trên rừng
+        lạc xuống.
+      </p>
+      <p>
+        Lão Đất quả là một trưởng họ không thể chê vào đâu được. Những cái gì
+        bài trí trong ngôi nhà thờ họ trước đây còn giữ lại được sau trận bom
+        đều được lão sắp xếp gọn ghẽ trên một chiếc hương án và một chiếc án thư
+        kê sau lưng hương án, đúng như sự sắp đặt trong ngôi nhà thờ ngày trước.
+        Thành thử trên cái nền nhà, chỗ để ở chẳng còn mấy.
+      </p>
+      <p>
+        Định ngắm hồi lâu một bức ảnh đóng khung treo giữa bức vách ván truyền,
+        hai bên cắm hai bông hoa giấy. Mũ bình thiên, quân hàm vai, hai "miếng
+        tiết"tô phẩm đỏ trên hai ve áo quân phục.
+      </p>
+      <p>
+        Chủ nhà vừa chạy ra bên ngoài trở vào, ôm bên nách cái chai, miệng há ra
+        một hồi mới nghe tiếng hỏi:
+      </p>
+      <p>- Chú biết ai đó không?</p>
+      <p>
+        - Cháu Đất. Chúng em ở ngoài đó có biết tin buồn cháu Đất hy sinh...
+      </p>
+      <p>
+        - Thằng Đất, thằng con đầu của tui nó hy sinh rồi chú Định ạ. Nó mất
+        trong nam.
+      </p>
+      <p>
+        Định biết ông anh họ mình có những ba đời vợ, người kẻ ruộng, người kẻ
+        rừng, người kẻ biển, vì thế mà con cái đông, Định không biết xuể. Định
+        chỉ nhớ mặt hai người đầu là thằng Đất và con Cát. Còn cả một dây sau
+        lão cứ thứ tự mà đặt tên theo câu "Non xanh nước biếc". Những đứa sinh
+        sau cùng phần lớn với người vợ kẻ biển hiện giờ, chắc là về già nguồn
+        thơ văn của lão đã cạn cho nên chúng mang những cái tên ít hay.
+      </p>
+      <p>- Nhà đi đâu hết cả, anh? Định hỏi.</p>
+      <p>
+        - Cả nhà tui sáng nay đang mở chiến dịch vây ráp - lão Đất đưa mắt nhìn
+        ra trước nhà, thở dài hắt ra - đó chú coi, phiên chợ ba mươi Tết, lều
+        quán đã dựng xong, đàng hoàng to đẹp như vậy mà cả nhà tui toả ra lùa
+        khắp các ngả trong làng như lùa giặc, chúng nó vẫn không chịu vào họp.
+        Bạ đâu họp đó. Chú Định, chẳng lẽ chú cũng không còn nhớ cái chợ làng ta
+        chính là ở tại đây hay sao?
+      </p>
+      <p>
+        Định leo lên cái gờ đất uốn hình vành khăn, cao như bức thành, chân gờ
+        đất choãi ra đạp cả vào bức vách gỗ bên hồi nhà.
+      </p>
+      <p>
+        Đứng trên bờ thành công sự, khẩu đội pháo bộ đội đã rút đi từ lâu nhìn
+        ra tứ phía, cái chợ lâu đời ngày xưa bây giờ chỉ thấy hố bom, những
+        đường giao thông hào nói liền ba ụ pháo cao to sừng sừng như quả núi,
+        một ụ nằm tận sát ngoài bến đò chợ.
+      </p>
+      <p>
+        Trên nền đất lồi lõm, mấp mô mới dựng lên chơ vơ hai chiếc lều bằng nứa
+        lợp phên tranh.
+      </p>
+      <p>
+        Mới thấy dọn trong một ngôi lều là một cái sạp sách của cửa hàng sách
+        quốc doanh, mặt hàng chủ yếu được bày là những bức tranh cá chép, tranh
+        mâm ngũ quả, cùng mấy bộ liễn.
+      </p>
+      <p>
+        Tận góc khuất một ngôi lều khác là một lão thầy bói mặc chiếc áo Tôn
+        Trung Sơn mầu xám như một cán bộ thuế vụ, chẳng biết sáng hay đui, mắt
+        kính đen ôm nửa mặt, hai bàn tay rờ rờ trên mặt chiếc tráp bằng hòm đạn.
+      </p>
+      <p>
+        Lão Đất thoắt biến mất rồi lại về nhà với cây roi cầm ngang trên tay,
+        mặt mũi hầm hầm đầy giận dữ, cùng Định tợp mấy chén rượu nhấp với mực kh
+      </p>
+      <p>Thật đơn giản, lại mau lẹ.</p>
+      <p>*</p>
+      <p>
+        Quãng quá trưa, khi định được lão Đất giắt đi dụi mả bố mẹ mình trở về
+        thì cả khu chợ đã đông nghịt. Nhất là không khí của nó đã ra dáng một
+        phiên chợ Tết.
+      </p>
+      <p>
+        Trên mảnh đất bom đạn và chiến tranh đã nhào nặn đến biến dạng, Định có
+        dịp thấy tất cả những gì quen thuộc với Định từ nhỏ, chính Định cũng đã
+        quen đi, thì nó vẫn còn đó. Định thích thú ngắm nghía những con lợn đất
+        sơn đỏ, những chiếc kèn cũng bằng đất vắt hình con gà trống, những nhánh
+        hoa thờ với những bông hoa bằng giấy kim tuyến lỗ chỗ vết kim châm.
+      </p>
+      <p>
+        Chen lấn giữa đám con nít bâu quanh một chiếc bàn, Định đứng xem một anh
+        chàng đội mũ phớt tàng, mặt rỗ hoa đang vắt con giống. Từ một hàng những
+        những vắt bột nếp nhuộm màu ngũ sắc với một chiếc que tre, mười ngón tay
+        cứ thoăn thoắt trong nháy mắt đã làm sống lại những Phàn Lê Hoa, những
+        Quan Công, v.v..
+      </p>
+      <p>
+        Bánh mướt, bánh xèo... Định la cà suốt một dãy bán miếng chín quen thuộc
+        với Định từ bé. Định đi dưới giao thông hào, leo lên bờ hố bom. Các dãy
+        hàng cá, hàng gạo, hàng vôi, hàng nồi đất..., lão Đất chỉ có việc dùng
+        roi xô người ta vào, ấy thế mà đến lạ, thật không thể nào hiểu nổi, ai
+        ngồi đâu lại ngồi đấy, tự sắp xếp như sáu, bảy năm về trước, y như tự nó
+        cuộc sống đã có một thứ ký ức đầy chuẩn xác.
+      </p>
+      <p>
+        Định buồn rầu nhận thấy chính vì thế, mặc dầu mặt đất bị xáo trộn nhưng
+        cuộc sống con người lại ngưng đọng, như một sự lặp lại.
+      </p>
+      <p>
+        Một cái gì bao quanh Định, một không khí luôn luôn bao bọc Định, đấy là
+        sự quen thuộc, một nếp sống quen thuộc đã có từ lâu đời, và chả có gì bị
+        phá vỡ đang phô diễn trong phiên chợ Tết ban đầu khiến Định say mê và
+        rưng rưng cảm động, song sau đó hình như chính nó lại làm Định đến phải
+        phát mệt, và sợ - Định tưởng mình cùng với cả một đám đông đang sôi sục
+        đến chóng mặt trong một cái guồng quay đầy luẩn quẩn.
+      </p>
+      <p>
+        Lão Đất mặt mũi rạng rỡ, miệng phả ra hơi rượu, hét vang cả chợ trong
+        khi khệnh khạng đi lại phía Định: "Đó chú coi, tui không ra roi thì làm
+        sao có chợ? " (Định nghĩ thầm, buồn rầu: Mà lão nói đúng thật!).
+      </p>
+      <p>
+        Lão véo má chị bán trầu, cầm một lá, chạy sang anh hàng vôi quẹt một tý,
+        lại sang bà hàng cau, vốc một nhúm. Lão nhai bỏm bẻm. Rồi dạo qua trước
+        mặt mấy o hàng xén, lão trút hết nắm cau khô cầm trong tay cho họ, nhặt
+        một vuông khăn mặt bông vắt lên vai.
+      </p>
+      <p>Đầy vẻ phong tình, lão í ới hát:</p>
+      <p>"Nhớ ai lệ chảy bùi ngùi</p>
+      <p>"Khăn lau chẳng sạch, áo chùi chẳng khô.</p>
+      <p>Rồi lại còn phong tình hơn nhiều nữa, lại lại hát:</p>
+      <p>"Đêm nằm vuốt bụng thở dài.</p>
+      <p>"Bụng ơi bụng hỡi vì ai bụng tròn.</p>
+      <p>
+        Đấy là mẹo cao của lão. Mấy o hàng xén chưa chồng đỏ mặt lên giật nẩy
+        người xua lão ùi ùi như đuổi tà. Cầm chiếc khăn mặt bông vắt sang vai
+        bên kia, lão bước đến trước mặt lão thầy bói.
+      </p>
+      <p>- Ông người đâu? Lão Đất hỏi.</p>
+      <p>- Tui người trên Nhân Sơn xuống.</p>
+      <p>- Cái gì đây? - Lão Đất lôi chiếc khăn mặt bông trên vai xuống.</p>
+      <p>- Không thấy. Tôi đui.</p>
+      <p>- Nghe tiếng, ông có biết tui là ai không?</p>
+      <p>- Tiếng thì không nhưng nghe giọng thì biết.</p>
+      <p>- Vậy là ai?</p>
+      <p>- Ông chủ tịch xã.</p>
+      <p>- Tui còn to gấp mấy chủ tịch xã.</p>
+      <p>- Bẩm thưa, chắc ông là chủ tịch huyện? Lão thầy bói sợ hết vía.</p>
+      <p>
+        - Tôi còn to gấp mấy ông chủ tịch huyện ông biết không? Vậy thì ông nghe
+        tui nói nhé. Nghề ông là nghề mê tín dị đoan. Chính phủ cấm. Ông hiểu
+        không?
+      </p>
+      <p>- Thưa ông chủ tịch huyện...</p>
+      <p>
+        - Lại tự do... cái gì chứ gì? Phải rồi, gọi là tự do tín ngưỡng. Chữ với
+        nghĩa đếch gì mà như hóc xương cá... Tui là chủ tịch huyện mà ông còn
+        định dạy chính sách cho tui hử? Chỉ nôm na thế này, tui là quản chợ. Có
+        thêm ông thì chợ Tết mới ra chợ Tết. Mà vui. Ngày thường cũng vậy. Tui
+        không cấm. Chính phủ cấm nhưng tui đây không cấm. Tui chỉ bắt ông tuân
+        theo hai việc. Việc thứ nhứt là đóng thuế lều, lại thuế chợ. Việc thứ
+        hai là ông phải đoán quẻ cho ai nấy đều vui vẻ cả. Con cái người ta ở
+        ngoài chỗ hòn đạn mũi tên không ai chết. Thuyền bị giông bão ở ngoài
+        biển không đắm. Nhà tui ở kia kìa. Tui ngồi trong nhà mà nghe mấy mụ đàn
+        bà khóc bù lu bù loa lên giữa chợ là không được.
+      </p>
+      <p>
+        Định đứng dựa cây cột lều chờ nghe lao Đất ban bố chính sách chợ đối với
+        lão thầy bói xong mới dám đến gần, nắm lấy cánh tay lão lôi đi.
+      </p>
+      <p>
+        Vốn là đám mấy anh em Định ở ngoài Hà Nội đều là cán bộ nhà nước cũng tự
+        coi mình như cánh làm nên trong họ, mà họ hàng ở nhà cũng trọng vọng,
+        lấy đấy làm điều tự hào.
+      </p>
+      <p>
+        Bức thư của lão Đất gửi ra, ông anh đầu của Định đọc kỹ lắm. Ông anh đầu
+        của Định là một nhà khoa học trong quân đội, đã đi ra nước ngoài nhiều,
+        khi về hưu đóng đến cấp đại tá.
+      </p>
+      <p>
+        Ý kiến của cái ông trưởng ở ngoài ấy là kỳ này mấy anh em sẽ cúng vào
+        nhà thờ họ một chiếc trống.
+      </p>
+      <p>
+        "Chú Định ạ, lần này về, chú hãy cố mua một chiếc trống, mà phải là một
+        cái trống cái".
+      </p>
+      <p>“Cồng kềnh. Hay là em mua một chiếc trống bé ở đây mang về?"</p>
+      <p>"Chú thiển nghĩ lắm. Mà chỉ lười!".</p>
+      <p>
+        Ngồi với ông anh một lúc, Định mới kịp nghĩ ra và cười ầm lên. Một nhà
+        khoa học mà rồi cuối cùng vẫn là một anh nông dân, vẫn mang đầy đầu óc
+        một anh nông dân, mà cao thâm lắm, cái trống cái do mấy anh em Định cúng
+        vào nhà thờ họ đánh lên trong ngày Tết nghe oai linh biết bao, mấy anh
+        em Định không có mặt mà cũng như có mặt.
+      </p>
+      <p>
+        Lão Đất và Định đứng dưới mái lều nghe tiếng trống các loại đánh cứ rộn
+        lên ở đâu đó ngoài khu chợ. Nghe tiếng trống, bao giờ lão Đất cũng thấy
+        trong người không yên một chút nào, dường như mỗi đường gân, mạch máu,
+        thớ thịt của lão cứ rung lên, vừa cuồn cuộn trỗi dậy đầy hứng khởi lại
+        vừa bủn rủn, hai chân lão vừa muốn chạy phóng lên phía trước lại vừa
+        muốn chạy giật lùi về sau.
+      </p>
+      <p>
+        Có lẽ từ đời tổ tiên đã để lại trong đáy lòng của lão cùng với tiếng
+        trống là giặc dã, là giặc lụt, là sự hiện về của ông bà, thần linh.
+      </p>
+      <p>
+        Lão Đất không dám ra doi với đám bán trống, kiềng mặt chúng, lẽ vì thế.
+        Sáng nay sau khi đã dẹp xong hết các nhóm chợ, lão có đến nhắc nhở. Đến
+        bây giờ duy nhất chỉ đám hàng trống là vẫn đang còn nhởn nhơ ở ngoài,
+        trên mấy miếng ruộng dùng làm giường mạ sau lưng đền.
+      </p>
+      <p>Đặt chân đến đây thái độ lão Đất hoà nhã hẳn.</p>
+      <p>
+        Cầm dùi đánh thùng thùng vào mặt lại gõ cách cách vào tang, thử mãi, lão
+        quyết định mua một chiếc trống cái không lớn nhưng mặt căng, gỗ tang
+        không hứa hẹn bị mọt.
+      </p>
+      <p>
+        - Ông mua cho trường học hay cho việc họ? Kẻ bán trống, một anh dân mạn
+        xã trong quấn khăn đầu rìu hỏi lão, chẳng biết hỏi thật hay bỡn.
+      </p>
+      <p>- Tôi là lão Đất, quản chợ. Tôi mua cho việc họ.</p>
+      <p>
+        - Nhốt chúng tôi vào trong chợ thì chỉ điếc tai thiên hạ. Ông cho đám
+        chiêng trống chúng tôi ở ngoài này là phải. Vậy mà mấy mụ hàng cá đến là
+        hay đơm đặt. Họ vu cho ông đánh họ phải không? Láo! Láo!
+      </p>
+      <p>- Giá bao nhiêu cái trống?</p>
+      <p>
+        Gã hàng trống quấn khăn đầu rìu rõ ràng là muốn chọc tức lão Đất chơi,
+        trả thù cho cánh hàng cá. Hắn gọi một cái giá mà lão Đất biễt là gọi xỏ.
+      </p>
+      <p>Lão Đất cũng không nói gì, thậm chí lại còn chào rồi mới đi.</p>
+      <p>
+        Lão tức như bị bò đá nhưng lòng trân trọng đối với tiếng trống linh
+        thiêng vẫn khiến lão ngậm miệng. "Anh em chú đã có lòng với họ thì trao
+        tiền cho tui, lão nói bằng giọng buồn bã, ra giêng cha con tui vào trong
+        Cầu Bùng mua khiêng ra".
+      </p>
+      <p>Định an ủi lão nhưng trong lòng rất lấy làm phục gã bán trống.</p>
+      <p>
+        Đi sau lưng người anh họ trở về trong chợ, đi qua một cái bờ rào nứa đan
+        mắt cáo của nhà ai. Định lại nhớ khu vườn xưa với những rặng cây chè
+        tàu, nhìn người đàn bà nào trong chợ với yếm, váy tơi tả, xơ xác. Định
+        cũng sực nhớ đến Tề cùng những ngưòi làng vất vả vì miếng ăn, chưa trẻ
+        đã già.
+      </p>
+      <p>
+        Định giật mình nhận thấy một điều hiển nhiên là giá anh em Định vẫn cứ
+        quẩn quanh ở làng thì cũng như họ, cũng hoà nhập vào cái guồng quay số
+        phận ấy. Định, các ông anh Định lại gióng y hệt như người anh họ, như
+        lão Đất.
+      </p>
+      <p>*</p>
+      <p>
+        Lúc bấy giờ, trong một ngôi lều, cô gái coi sạp hàng sách quốc doanh
+        đang đổ ngả nửa người xuống giữa mớ tranh tết, hàm răng trắng nõn nhe ra
+        cười, mải nhìn ra một cái hố bom ngay trước mặt lều, ở đấy cả góc chợ
+        đang nháo loạn lên. Có một con lợn giống bị sổng rọ, người ta đã lùa
+        được chú lợn xuống đáy hố bom nhưng không sao bắt được. Cô gái mải xem
+        trò vui, đến lúc quay nhìn sang bên cạnh mới thấy một ông khách đã có
+        tuổi đứng đó không biết từ bao giờ, đang nhìn mình. Cô ta vội đứng thẳng
+        dậy.
+      </p>
+      <p>
+        - Tranh tết năm nay in đẹp lắm, bác ạ. Bác mua đi. Hay là bác mua đôi
+        câu đối.
+      </p>
+      <p>Định cầm lên một bức cá gáy vượt Vũ Môn, ngó qua.</p>
+      <p>- Cháu tên là gì?</p>
+      <p>- Thưa bác, cháu tên là Kim.</p>
+      <p>- Cháu là con thứ mấy của mẹ Tề?</p>
+      <p>Cô gái tròn mắt:</p>
+      <p>- Cháu là thứ tư. Bác biết.. mẹ cháu?</p>
+      <p>- Bác là Định, ở ngoài Hà Nội về. Bác cháu mình có họ với nhau đấy.</p>
+      <p>
+        - Chắc là họ bên ngoại, bên mẹ cháu. Bác cũng tế tổ ở nhà thờ bác Đất?
+      </p>
+      <p>- Phải. Mẹ cháu có khoẻ không?</p>
+      <p>- Mẹ cháu khoẻ lắm. Mời bác sang nhà cháu chơi.</p>
+      <p>- Cảm ơn cháu. Cháu được học đến lớp mấy.</p>
+      <p>- Cháu học được ít lắm. Nói giấu gì bác, nhà cháu vất vả lắm.</p>
+      <p>- Bố cháu làm nghề gì?</p>
+      <p>
+        - Bố cháu thì cháu... chẳng biết nói ra sao. Mai, mồng một, mời bác sang
+        chơi. Nhà cháu ở bên kia đò.
+      </p>
+      <p>
+        Định mua một đôi câu đối. Định cuộn lại cầm trên tay, lại mua một ít quà
+        bánh ngoài chợ.
+      </p>
+      <p>
+        Chiếc đò chợ lui tới giữa hai bên bờ bằng một khúc dây chão to như con
+        trăn, lúc nào cũng sũng ướt, đầu bên này buộc vào một chiếc cọc sắt chôn
+        chân bên ụ pháo. Nhìn người đàn ông kéo đò, Định tưởng thấy thời gian ở
+        đây hàng mấy chục năm qua như ngưng lại. Vẫn nguời kéo đò ấy, trạc ngoài
+        năm mươi, tiếng nói chỏn lỏn, mắt lông quặm lúc nào cũng đỏ rựng, một
+        vuông khăn đen của đàn bà chít ôm sát lông mày nom như hiệp sĩ Tàu. Ngày
+        chưa cắp sách đi học, bám váy mẹ đi chợ Tết Định đã nhìn thấy ông ta như
+        thế. Quái quỷ, chẳng lẽ người kéo đò không già, không chết?
+      </p>
+      <p>
+        Định hỏi thăm mấy người chung quanh, thì được biết người kéo đò cũ đã
+        chết từ lâu, và đây là con người kéo đò ngày trước.
+      </p>
+      <p>
+        Ở bên kia đã là xã khác. Tề đi lấy chồng khác xã ở bên kia làm ăn còn
+        khó khăn hơn bên này. Định leo lên ụ pháo đứng nhìn sang. Một dải chi
+        chít những mái tranh nằm kề những nại muối vào mùa đông vắng tanh, và
+        giát những trạt bãi đất phẳng lỳ mênh mông, không một bóng cây.
+      </p>
+      <p>
+        Định biết ở đấy vào vụ hè dưới trời nắng chang chang chỉ có giọt mồ hôi
+        mặn của con người pha với giọt nước biển mặn để đúc nên hạt muối mặn.
+      </p>
+      <p>
+        Định muốn sang nhà gặp Tề nhưng lại sợ Tề càng xấu hổ vì nhà cửa. Mấy
+        lần ông kéo đò khoát tay giục nhưng Định vẫn đứng đó.
+      </p>
+      <p>
+        Chợt Định nhìn thấy một bóng thiếu nữ vừa chớm nhớn vận chiếc áo cánh
+        trắng duyên dáng chạy vụt xuống bến đò như một làn ánh sáng, khiến Định
+        lầm tưởng cô em họ ba mươi năm về trước. Kim, Kim, Kim, đời cháu mai
+        ngày sẽ ra sao nếu gắn chặt với những làng xóm quê nhà yêu dấu?
+      </p>
+      <p>- Kim!</p>
+      <p>
+        - Bác, sao bác đứng đây? - vẻ vồn vã của Kim sao mà giống Tề ngày trước,
+        đầy vẻ trẻ con - hay là bác cùng sang với cháu...
+      </p>
+      <p>
+        - Rồi bác sang - Định lưỡng lự một chút - hay là cháu về bảo với mẹ cháu
+        là đến trưa mai, bác còn ở bên này.
+      </p>
+      <p>
+        Định trao vào tay Kim gói quà, lại cả đôi câu đối Tết. Định cũng đâm ra
+        nhác đọc, mà câu đối Tết năm nào chả viết những câu như mọi năm trước?
+      </p>
+    </div>
+
+    <div class="essay" id="essay">
+      <p>
+        Cuộc sống sinh động của người dân lao động ở vùng quê được thể hiện rõ
+        nét qua phiên chợ Tết. Một ngôi làng ven biển u ám, dơ bẩn và luôn phảng
+        phất mùi tanh của cá là bối cảnh chính được duy trì xuyên suốt câu
+        chuyện, tạo nên sự đồng cảm của độc giả đối với những số phận gắn bó nơi
+        đây:
+      </p>
+      <i>
+        <p>
+          "Định luôn bị một không khí quen thuộc bao trùm quanh mình, đó là lối
+          sống đã ăn sâu vào tiềm thức từ lâu, mà không gì có thể làm thay đổi
+          điều đó, tập trung vào phiên chợ Tết ban đầu khiến Định cảm thấy say
+          sưa và dạt dào cảm xúc, nhưng sau đó chính sự lặp đi lặp lại ấy lại
+          gây cho Định cảm giác mệt mỏi và lo sợ – Định nghĩ rằng mình cùng với
+          đám đông đang cuốn theo vòng xoáy dập dìu không hồi kết."
+        </p>
+      </i>
+      <p>
+        Trong phiên chợ Tết, Định bất ngờ gặp lại Tề, người con gái mà anh từng
+        say đắm. Thật đáng buồn khi cả hai chỉ là họ hàng xa, khiến họ không thể
+        đến với nhau. Sau nhiều năm xa cách, anh phát hiện Tề đã lập gia đình,
+        sinh ra một cô con gái tên Kim, nhanh nhẹn và tháo vát như mẹ, việc này
+        khiến Định cảm thấy nghẹn ngào và day dứt trong lòng. Dẫu vậy, khi lập
+        gia đình, cuộc sống của cô không được viên mãn. Hình ảnh người phụ nữ
+        vất vả xuất hiện ở phần mở đầu và tái xuất ở cuối tác phẩm đã thể hiện
+        nỗi trăn trở của Định về sự đau khổ và ràng buộc mà mẹ con Tề phải gánh
+        chịu, cũng như cuộc sống của cư dân làng biển tại đây.
+      </p>
+      <p>
+        Từ góc nhìn của một “cán bộ thoát ly”, Định nhận thấy rằng bầu không khí
+        tại quê hương mình vẫn bị bao trùm bởi sự chậm phát triển và lạc hậu,
+        điều này giống như một vòng tròn không bao giờ thay đổi,
+        <i
+          >“dẫu cho mặt đất có bị xáo trộn, nhưng cuộc sống con người lại như
+          đang dừng lại, giống như một sự lặp lại”.</i
+        >
+      </p>
+      <i
+        ><p>
+          “Ai đó vẫn ngồi nguyên vị trí cũ, tự sắp xếp mọi thứ như sáu, bảy năm
+          trước, dường như cuộc sống đã lưu giữ một ký ức rất rõ ràng.”
+        </p></i
+      >
+      <p>
+        Khung cảnh nhạt nhẽo và trì trệ này luôn ám ảnh tâm trí Định. Thậm chí,
+        anh còn mất hứng đọc những câu đối, vì “câu đối Tết hàng năm đều viết
+        những câu na ná như những năm trước”. Dù chiến tranh đã qua đi nhưng
+        cuộc sống nơi đây vẫn sa đà trong thói quen lạc hậu và u ám.
+      </p>
+      <p>
+        Sự lặp lại bất ngờ giữa hai thế hệ là chi tiết tiêu biểu nhất thể hiện
+        cái vòng luẩn quẩn ấy. Hình ảnh người lái đò ngày trước hiện lên khiến
+        Định nhầm tưởng ông ấy còn sống, thực tế chỉ là con trai của ông. Cô bé
+        bán báo và bà Tề bán cá, hai mẹ con vẫn mang những nét đặc trưng tạo nên
+        thân phận người phụ nữ trong một xã hội lạc hậu.
+      </p>
+      <p>
+        Trước năm 1975, Nguyễn Minh Châu là một nhà văn mang tâm thế của người
+        lính, ông tin rằng “cần phải chiến đấu để bảo vệ sự tồn vinh của đất
+        nước và dân tộc”. Do đó, ông không ngừng ca ngợi vẻ đẹp diệu kỳ, lấp
+        lánh của cuộc sống.
+      </p>
+      <p>
+        Sau khi chiến tranh kết thúc, Nguyễn Minh Châu đã chuyển hướng tư duy
+        nghệ thuật, đối diện với sự thật để viết về những tang thương mà chiến
+        tranh để lại. Ông khám phá từng khía cạnh, phơi bày mọi điều tiêu cực,
+        cổ hủ, lỗi thời, hoàn thành trách nhiệm của một nhà văn trong việc “khai
+        thác bản chất con người qua các giai đoạn lịch sử”.
+      </p>
+      <p>
+        Truyện ngắn "Chợ Tết" phần nào thể hiện rõ ràng tâm tư của Nguyễn Minh
+        Châu về tình hình cuộc sống và con người trong thời kỳ hậu chiến. Tác
+        giả đã từng nuôi hy vọng rằng quê hương sẽ được hồi sinh sau khi thoát
+        khỏi thảm họa chiến tranh, nhưng điều ông nhận thấy chỉ là sự thất vọng
+        khi nhìn thấy mọi thứ vẫn chìm trong sự trì trệ và lạc hậu.
+      </p>
+      <p>
+        Câu hỏi đầy ám ảnh “Kim, Kim, Kim, tương lai cháu sẽ ra sao nếu gắn bó
+        với quê hương yêu dấu?” như một tín hiệu đánh thức, phá vỡ vòng luẩn
+        quẩn đang giam cầm con người. Ông lo âu cho vận mệnh của cô bé, mong
+        muốn có ánh sáng dẫn đường giúp người dân nơi đây vươn lên khỏi những
+        đau khổ mà họ đang phải đối mặt.
+      </p>
+      <p>
+        Các khía cạnh của đời sống hậu chiến được khám phá đầy đủ qua tác phẩm
+        "Chợ Tết". Trong bối cảnh phiên chợ ngày Tết, tác giả đã tinh tế phát
+        hiện ra một góc khuất cần bị phê phán, đó chính là bạo lực. Hình thức
+        này dường như tạm thời đẩy lùi sự hỗn loạn, nhưng chỉ sau vài khoảnh
+        khắc, mọi thứ lại trở về với cái ồn ào vốn có.
+      </p>
+      <p>
+        Hình ảnh cây roi đuôi cá đuối của lão Đất, một kẻ cai chợ thô bạo, liên
+        tục được nhắc đến để làm nổi bật thực trạng xã hội vào thời điểm này.
+        Mọi thứ đều mang tính tự phát, cổ hủ, và để lập lại trật tự chỉ có thể
+        sử dụng đến bạo lực. Điều này khiến Định cảm nhận rõ rệt về sự man dại
+        và hoang sơ của cuộc sống nơi đây. Ông Đất, với bộ đồ tơi tả, đứng cười
+        một cách vô tư. Sau khi thắng lợi, ông tiếp tục dùng roi để giải quyết
+        các chợ lẻ khác. Các tiểu thương bán quà, hương và những người buôn hoa,
+        dù là hoa giả hay hoa thật, đều lo sợ mất hàng nên đã nhanh chóng mang
+        hàng vào chợ khi nghe tin tức xảy ra ở chợ cá. Mọi việc diễn ra thật đơn
+        giản và nhanh chóng.
+      </p>
+      <p>
+        Nguyễn Minh Châu đã đề cập đến vấn đề này một cách mạnh mẽ trong truyện
+        ngắn "Chiếc thuyền ngoài xa", tác phẩm khai thác chủ đề đời sống xã hội
+        và cá nhân sau chiến tranh.
+      </p>
+      <p>
+        Người phụ nữ làm nghề chài lưới hàng ngày phải chịu đựng những trận đòn
+        tàn nhẫn từ người chồng thô bạo, cứ “ba ngày một trận nhỏ, năm ngày một
+        trận lớn” nhưng vẫn chấp nhận với sự nhẫn nhịn, không phản kháng và cũng
+        không tìm cách trốn thoát.
+      </p>
+      <p>
+        Ông ta, không nói năng gì, trút cơn giận bằng cách dùng thắt lưng đánh
+        tới tấp vào lưng người phụ nữ, vừa đánh vừa thở dốc, hai hàm răng nghiến
+        ken két, mỗi lần quất xuống lại kèm theo những lời nguyền rủa đầy đau
+        đớn:
+        <i>“Mày chết đi cho ông nhờ. Chúng mày chết hết đi cho ông nhờ!”</i>
+        Người phụ nữ giữ vẻ cam chịu, không hề kêu la, không chống đối và cũng
+        chẳng có ý định chạy trốn.
+      </p>
+      <p>
+        Hình ảnh của bạo lực và hành hạ xuất hiện trong cả hai tác phẩm có thể
+        được coi là sự chấp nhận không mong muốn của con người trong thời kỳ hậu
+        chiến, đã quen với sự nhẫn nhục đến mức không còn cảm thấy bất ngờ. Điều
+        này mở ra nhiều vấn đề đáng suy ngẫm mà một quốc gia vừa thoát khỏi
+        chiến tranh phải đối mặt, đó là sự nghèo khó và tăm tối; có lẽ việc vượt
+        qua những khó khăn này còn khó hơn cả cuộc kháng chiến chống ngoại bang.
+      </p>
+      <p>
+        Trong tác phẩm văn học này, người đọc cảm nhận được rằng nhân vật Định
+        đang tự thu mình lại và giữ vai trò quan sát viên. Anh kể lại một cách
+        rất khách quan và vô tư những gì mà anh quan sát và nghe thấy, phản ánh
+        một cách chân thực cuộc sống của cư dân làng chài.
+      </p>
+      <p>
+        Một điểm nổi bật ở Chợ Tết chính là tài năng miêu tả tâm lý của nhân vật
+        Định mà Nguyễn Minh Châu thể hiện một cách sắc sảo nhưng cũng rất mềm
+        mại và tự nhiên. Điều này giúp chuyển tải đầy đủ những thông điệp sâu
+        sắc mà tác giả muốn truyền đạt.
+      </p>
+      <p>
+        <i
+          >“Định bỗng nhận ra một điều hiển nhiên rằng khi các anh em của Định
+          vẫn còn quanh quẩn ở làng thì họ cũng giống như anh, đã hoà nhập vào
+          vòng quay định mệnh ấy. Định và các anh của anh tương tự như người anh
+          họ của mình, như lão Đất.”</i
+        >
+      </p>
+      <p>
+        "Chợ Tết" của Nguyễn Minh Châu là một tác phẩm đặc sắc về cả nội dung và
+        nghệ thuật, thành công trong việc tái hiện không khí chợ Tết, qua đó bày
+        tỏ tình yêu và nỗi lo ngại về sự thay đổi của văn hóa làng quê. Tác phẩm
+        là một đóng góp lớn cho văn học Việt Nam, giúp người đọc trân quý và giữ
+        gìn bản sắc văn hóa truyền thống trong dòng chảy hiện đại hóa.
+      </p>
+    </div>
+
+    <div class="return" id="return">
+      <a href="./index.html" class="back-link">Trở lại</a>
+    </div>
+  </body>
+</html>
